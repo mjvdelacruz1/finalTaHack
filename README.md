@@ -5,8 +5,8 @@ Run virtual environment
 - .\venv\Scripts\activate
 
 Step 2:
-- Install Django and Django Compressor
-- pip install Django django-compressor
+- Install the needed requirements
+- pip install -r requirements.txt
 
 Step 3:
 - Install pytailwindcss
