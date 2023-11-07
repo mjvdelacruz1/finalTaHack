@@ -8,6 +8,9 @@ from .models import CourseModel
 def login(request):
     return render(request, 'login.html')
 
+def maps(request):
+    return render(request, 'maps.html')
+
 def courses(request):
     return render(request,'courses.html')
 
