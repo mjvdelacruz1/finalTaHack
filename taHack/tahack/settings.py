@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'paths.apps.PathsConfig',
     'compressor',
+    'cloudinary', #new, this is for uploading images
 ]
 
 MIDDLEWARE = [
@@ -81,6 +85,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
 
 
 # Password validation
@@ -130,3 +136,10 @@ COMPRESS_ROOT = BASE_DIR / 'static' #new
 COMPRESS_ENABLED = True #new
 
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',) #new
+
+# adding config
+cloudinary.config( #new  
+  cloud_name = "ddz8dbdhl", 
+  api_key = "793115113478644", 
+  api_secret = "6BxZZUCgQ3RzSFXsuTcMpmKieKM" 
+)
