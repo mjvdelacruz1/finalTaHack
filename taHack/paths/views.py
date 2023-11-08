@@ -5,8 +5,8 @@ from .models import CourseModel
 
 # Create your views here.
 
-def login(request):
-    return render(request, 'login.html')
+def instructors(request):
+    return render(request, 'instructors.html')
 
 def maps(request):
     return render(request, 'maps.html')
@@ -14,8 +14,8 @@ def maps(request):
 def courses(request):
     return render(request,'courses.html')
 
-def roadmap(request):
-    return render(request, 'roadmap.html')
+def contact(request):
+    return render(request, 'contact.html')
 
 def landing(request):
     return render(request, 'landing.html')
