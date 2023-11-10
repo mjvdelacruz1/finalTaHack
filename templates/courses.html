@@ -1,0 +1,31 @@
+{% extends "a_base.html" %}
+
+{% block content %}
+
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap w-full mb-20">
+        <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Pitchfork Kickstarter Taxidermy</h1>
+          <div class="h-1 w-20 bg-green-800 rounded"></div>
+        </div>
+        <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+      </div>
+      <div class="course-list">
+        {% for course in courses %}
+            <div class="course-card">
+                <h2>{{ course.CourseTitle }}</h2>
+                <p>{{ course.CourseDescription }}</p>
+                <p>Author: {{ course.Author }}</p>
+                <p>Duration: {{ course.Duration }}</p>
+                <p>Rating: {{ course.Rating }}</p>
+                <p>Price: ${{ course.Price }}</p>
+                <img src="{{ course.image.url }}" alt="{{ course.CourseTitle }} Image">
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+  </section>
+  
+  <!-- hahahah -->
+{% endblock content %}
