@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import CourseModel
+from .models import FieldModel
 
 
 # Create your views here.
@@ -11,12 +11,14 @@ def instructors(request):
 def maps(request):
     return render(request, 'maps.html')
 
-def courses(request):
-    courses = CourseModel.objects.all()
+def fields(request):
+    fields = FieldModel.objects.all()
     context = {
-        'courses': courses
+        'fields': fields
     }
-    return render(request,'courses.html', context)
+    return render(request, 'fields.html', context)
+
+
 
 def contact(request):
     return render(request, 'contact.html')

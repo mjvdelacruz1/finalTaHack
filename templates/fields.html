@@ -11,19 +11,19 @@
         </div>
         <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
       </div>
-      <div class="course-list">
-        {% for course in courses %}
-            <div class="course-card">
-                <h2>{{ course.CourseTitle }}</h2>
-                <p>{{ course.CourseDescription }}</p>
-                <p>Author: {{ course.Author }}</p>
-                <p>Duration: {{ course.Duration }}</p>
-                <p>Rating: {{ course.Rating }}</p>
-                <p>Price: ${{ course.Price }}</p>
-                <img src="{{ course.image.url }}" alt="{{ course.CourseTitle }} Image">
+      <div class="field-list">
+        {% for field in fields %}
+            <div class="field-card">
+                <h2>{{ field.FieldTitle }}</h2>
+                <p>{{ field.FieldDescription }}</p>
+                <p>Author: {{ field.Author }}</p>
+                <p>Duration: {{ field.Duration }}</p>
+                <p>Rating: {{ field.Rating }}</p>
+                <p>Price: ${{ field.Price }}</p>
+                <img src="{{ field.image.url }}" alt="{{ field.FieldTitle }} Image">
             </div>
         {% endfor %}
-    </div>
+    </div>      
     </div>
   </section>
   
