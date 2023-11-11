@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import FieldModel
 
@@ -18,6 +18,14 @@ def fields(request):
     }
     return render(request, 'fields.html', context)
 
+def show_courses(request, field_id):
+    field = get_object_or_404(FieldModel, id=field_id)
+    courses = field.coursemodel_set.all()  # Retrieve all courses associated with the field
+    context = {
+        'field': field,
+        'courses': courses,
+    }
+    return render(request, 'show_courses.html', context)
 
 
 def contact(request):
