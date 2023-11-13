@@ -27,6 +27,11 @@ def show_courses(request, field_id):
     }
     return render(request, 'show_courses.html', context)
 
+def login(request):
+    return render(request, 'login.html')
+
+def signup(request):
+    return render(request, 'signup.html')
 
 def contact(request):
     return render(request, 'contact.html')
@@ -34,7 +39,6 @@ def contact(request):
 def landing(request):
     return render(request, 'landing.html')
     
-
 # class CourseViewSet(viewsets.ModelViewSet): 
 #     # define queryset 
 #     queryset = CourseModel.objects.all() 

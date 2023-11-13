@@ -8,6 +8,9 @@ urlpatterns = [
     path('fields/<int:field_id>/courses/', views.show_courses, name='show_courses'),
 	path('contact/', views.contact, name="contact"),
 	path('maps/', views.maps, name="maps"),
+	path('login/', views.login, name="login"),
+	path('signup/', views.signup, name="signup"),
+ 
     path('', views.landing, name="landing"),
 
 ]
