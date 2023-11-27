@@ -1,16 +1,14 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
-
-from django.db import models
-from cloudinary.models import CloudinaryField
+from datetime import timedelta
 
 class FieldModel(models.Model):
     FieldTitle = models.CharField(max_length=255)
     FieldDescription = models.TextField()
     Author = models.CharField(max_length=100)
-    Duration = models.DurationField()
-    Rating = models.IntegerField()
-    Price = models.DecimalField(max_digits=10, decimal_places=2)
+    Duration = models.DurationField(default=timedelta(days=0))
+    Rating = models.IntegerField(default=0)
+    Price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     image = CloudinaryField('image', default='jkccejtc06k0elzgia0m')
     
     def __str__(self):

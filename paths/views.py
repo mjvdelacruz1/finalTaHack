@@ -1,9 +1,24 @@
 from django.shortcuts import render, get_object_or_404
 
 from .models import FieldModel
+from .forms import FieldForm
 
 
 # Create your views here.
+
+def field_create(request):
+    context = {}
+    form = FieldForm
+    context['title'] = 'Make a Field'
+    if request.method == 'POST':
+        if 'save' in request.POST:
+            form = FieldForm(request.POST)
+            form.save()
+    context['form'] = form
+    return render(request, 'field_create.html', context)
+
+def field_created(request):
+    return render(request, 'field_created.html')
 
 def instructors(request):
     return render(request, 'instructors.html')
