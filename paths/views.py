@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 
 from .models import FieldModel
 from .forms import FieldForm
@@ -14,6 +14,11 @@ def field_create(request):
         if 'save' in request.POST:
             form = FieldForm(request.POST)
             form.save()
+
+            # Redirect to a success page or another view
+            return redirect('field_created')  # Change 'success_page' to the name of the URL pattern you want to redirect to
+    else:
+        form = FieldForm()
     context['form'] = form
     return render(request, 'field_create.html', context)
 
