@@ -1,2 +1,9 @@
 taHack/venv
 venv
+static/CACHE
+CACHE
+tahack/__pycache__
+__pycache__
+*.sqlite3
+paths/__pycache__
+__pycache__
