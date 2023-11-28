@@ -1,5 +1,7 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+
+app_name='paths'
 
 urlpatterns = [
         #Leave as empty string for base url
@@ -7,6 +9,7 @@ urlpatterns = [
 	path('fields/', views.fields, name="fields"),
 	path('contact/', views.contact, name="contact"),
 	path('maps/', views.maps, name="maps"),
+	path('login/', include('users.urls')),
     path('', views.landing, name="landing"),
 
 ]

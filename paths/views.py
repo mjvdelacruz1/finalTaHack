@@ -18,8 +18,6 @@ def fields(request):
     }
     return render(request, 'fields.html', context)
 
-
-
 def contact(request):
     return render(request, 'contact.html')
 
