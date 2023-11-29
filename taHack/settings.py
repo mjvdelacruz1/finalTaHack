@@ -32,8 +32,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+SITE_ID=3 #new
 
 INSTALLED_APPS = [
+    'users', #new
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,10 +45,23 @@ INSTALLED_APPS = [
     'paths.apps.PathsConfig',
     'compressor',
     'cloudinary', #new, this is for uploading images
-    'users',
+    "django.contrib.sites", #new
+    'allauth', #new
+    'allauth.account', #new
+    'allauth.socialaccount', #new
+    'allauth.socialaccount.providers.google', #new
+    
 ]
 
-AUTH_USER_MODEL =  'users.user'
+SOCIALACCOUNT_PROVIDERS={ #new
+    "google": {
+        "SCOPE": {
+            "profile",
+            "email"
+        },
+        "AUTH_PARAMS": {"access_type": "online"}
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -141,6 +156,14 @@ STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',) #new
 # adding config
 cloudinary.config( #new  
   cloud_name = "ddz8dbdhl", 
-  api_key = "793115113478644", 
+  api_key = "793115113478644",
   api_secret = "6BxZZUCgQ3RzSFXsuTcMpmKieKM" 
 )
+
+AUTHENTICATION_BACKENDS = {  #new
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
+}
+
+LOGIN_REDIRECT = "/" #new
+LOGOUT_REDIRECT = "/" #new

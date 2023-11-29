@@ -40,28 +40,43 @@
             </span>
           </div>
           
-          <form action="" method="POST" class="mt-4">
+          <form method="post" action="{% url 'users:loginView' %}">
             {% csrf_token %}
-        
+            
             <div class="mb-4">
-              <label for="{{ form.email.name }}" class="block text-sm font-medium text-gray-700">Email:</label>
-              <input type="email" id="{{ form.email.id }}" name="email" placeholder="Enter Email here..." class="mt-1 p-2 block w-full border rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300">
+              <label for="id_username" class="block text-sm font-medium text-gray-700">Username:</label>
+              <input type="text" id="id_username" name="username" placeholder="Enter Username here..." class="mt-1 p-2 block w-full border rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300">
             </div>
-      
+          
             <div class="mb-4">
-              <label for="{{ form.password1.id}" class="block text-sm font-medium text-gray-700">Password:</label>
-              <input type="password" id="{{ form.password1.id }}" name="password1" placeholder="Enter Password here..." class="mt-1 p-2 block w-full border rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300">
-            </div>
+              <label for="id_password" class="block text-sm font-medium text-gray-700">Password:</label>
+              <div class="relative">
+                  <input type="password" id="id_password" name="password" placeholder="Enter Password here..." class="mt-1 p-2 block w-full border rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300">
+                  <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                      <input type="checkbox" onclick="togglePasswordVisibility()" class="cursor-pointer mt-1">
+                      <label for="showPassword" class="ml-2 text-sm text-gray-700">Show Password</label>
+                  </div>
+              </div>
+          </div>
+          
+          <script>
+              function togglePasswordVisibility() {
+                  const passwordInput = document.getElementById('id_password');
+                  passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+              }
+          </script>
+          
         
             <div class="mb-6">
                 <button type="submit" class="w-full bg-slate-900 hover:bg-purple-900 text-white px-4 py-2 rounded-md">
-                    Sign up
+                    Sign in
                 </button>
             </div>
-              <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-full">
+        
+            <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-full">
                 <img class="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA">
                 Sign in with Google
-              </button>
+            </button>
             </div>
           </form>
 

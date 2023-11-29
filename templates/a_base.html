@@ -29,6 +29,8 @@
           <a class="mr-5 hover:text-green-600" href="/fields">Courses</a>
           <a class="mr-5 hover:text-green-600" href="/instructors">Instructors</a>
           <a class="mr-5 hover:text-green-600" href="/contact">Contact</a>
+          <span>{{ request.user }}</span>
+          <span><a href="{% url 'users:logout' %}">   Logout</a></span>
         </nav>
         
       </div>
