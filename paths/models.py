@@ -5,10 +5,6 @@ from datetime import timedelta
 class FieldModel(models.Model):
     FieldTitle = models.CharField(max_length=255)
     FieldDescription = models.TextField()
-    Author = models.CharField(max_length=100)
-    Duration = models.DurationField(default=timedelta(days=0))
-    Rating = models.IntegerField(default=0)
-    Price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     image = CloudinaryField('image', default='jkccejtc06k0elzgia0m')
     
     def __str__(self):
@@ -19,6 +15,10 @@ class CourseModel(models.Model):                    #new
     image = CloudinaryField('image', default='jkccejtc06k0elzgia0m')
     title = models.CharField(max_length=255)  # Add a field for the course title
     description = models.TextField()  # Add a field for the course description
+    Author = models.CharField(max_length=100, default='Anonymous' )
+    Duration = models.DurationField(default=timedelta(days=0))
+    Rating = models.IntegerField(default=0)
+    Price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
         return self.title
