@@ -10,6 +10,8 @@ urlpatterns = [
     path('fields/<int:field_id>/courses/', views.show_courses, name='show_courses'),
 
     path('courses/<int:course_id>/feedback/', views.show_feedback, name='show_feedback'),
+
+    path('course/<int:course_id>/', views.course_detail, name='course_detail'), #new this is for lessons
     
     # path('create/', views.field_create, name="create_field"), #new
     # path('created/', views.field_created, name='field_created'), #new

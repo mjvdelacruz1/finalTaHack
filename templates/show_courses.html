@@ -9,7 +9,8 @@
         <div class="field-list">
             {% for course in courses %}
                 <div class="field-card">
-                    <h2>{{ course.title }}</h2>
+                    <a href="{% url 'paths:course_detail' course.id %}" class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 hover:underline">{{ course.title }}
+                    </a>
                     <p>{{ course.description }}</p>
                     <p>Author: {{ course.Author }}</p>
                     <p>Duration: {{ course.Duration }}</p>
