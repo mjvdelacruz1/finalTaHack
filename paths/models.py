@@ -40,7 +40,7 @@ class FeedbackModel(models.Model):
     rating = models.IntegerField(default=0)
     
     def __str__(self):
-        return f"{self.course.header}: {self.rating}"
+        return self.comment
 
 
     # Add fields for your LessonModel, e.g., Lesson title, content, video link, etc.

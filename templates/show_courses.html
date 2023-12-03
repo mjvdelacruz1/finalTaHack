@@ -17,7 +17,9 @@
                     <p>Price: ${{ course.Price }}</p>
                     <img src="{{ field.image.url }}" alt="{{ field.FieldTitle }} Image">
                     <!-- Add other course details as needed -->
-                    
+                    <button class="bg-teal-700">
+                        <a href="{% url 'paths:show_feedback' field.id %}">Show Reviews</a>
+                      </button>           
                 </div>
             {% endfor %}
         </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 
-from .models import FieldModel
+from .models import FieldModel, CourseModel, FeedbackModel
 # from .forms import FieldForm
 
 
@@ -22,15 +22,15 @@ from .models import FieldModel
 #     context['form'] = form
 #     return render(request, 'field_create.html', context)
 
-
-def field_created(request):
-    return render(request, 'field_created.html')
-
-def instructors(request):
-    return render(request, 'instructors.html')
-
-def maps(request):
-    return render(request, 'maps.html')
+def show_feedback(request, course_id):
+    course = get_object_or_404(CourseModel, id=course_id)
+    feedbacks = FeedbackModel.objects.filter(course=course)
+    
+    context = {
+        'course': course,
+        'feedbacks': feedbacks,
+    }
+    return render(request, 'feedback.html', context)
 
 def show_courses(request, field_id):
     field = get_object_or_404(FieldModel, id=field_id)
@@ -41,7 +41,6 @@ def show_courses(request, field_id):
     }
     return render(request, 'show_courses.html', context)
 
-
 def fields(request):
     fields = FieldModel.objects.all()
     context = {
@@ -49,6 +48,15 @@ def fields(request):
     }
     return render(request, 'fields.html', context)
 
+
+def field_created(request):
+    return render(request, 'field_created.html')
+
+def instructors(request):
+    return render(request, 'instructors.html')
+
+def maps(request):
+    return render(request, 'maps.html')
 
 def login(request):
     return render(request, 'login.html')

@@ -1,0 +1,20 @@
+{% extends "a_base.html" %}
+
+{% block content %}
+
+    <h1>Feedback for {{ course.title }}</h1>
+
+    {% if feedbacks %}
+        <ul>
+            {% for feedback in feedbacks %}
+                <li>
+                    <strong>{{ feedback.user.username }}</strong> - Rating: {{ feedback.rating }}
+                    <p>{{ feedback.comment }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No feedback available for this course.</p>
+    {% endif %}
+
+{% endblock content %}

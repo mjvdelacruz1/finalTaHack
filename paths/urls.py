@@ -8,6 +8,8 @@ urlpatterns = [
 	path('instructors/', views.instructors, name='instructors'),
 	path('fields/', views.fields, name="fields"),
     path('fields/<int:field_id>/courses/', views.show_courses, name='show_courses'),
+
+    path('courses/<int:course_id>/feedback/', views.show_feedback, name='show_feedback'),
     
     # path('create/', views.field_create, name="create_field"), #new
     # path('created/', views.field_created, name='field_created'), #new
