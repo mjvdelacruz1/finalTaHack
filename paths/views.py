@@ -31,13 +31,13 @@ def show_courses(request, field_id):
     }
     return render(request, 'show_courses.html', context)
 
+    
 def fields(request):
     fields = FieldModel.objects.all()
     context = {
         'fields': fields
     }
     return render(request, 'fields.html', context)
-
 
 def field_created(request):
     return render(request, 'field_created.html')
@@ -58,7 +58,11 @@ def contact(request):
     return render(request, 'contact.html')
 
 def landing(request):
-    return render(request, 'landing.html')
+    fields = FieldModel.objects.all()
+    context = {
+        'fields': fields
+    }
+    return render(request, 'landing.html', context)
     
 # class CourseViewSet(viewsets.ModelViewSet): 
 #     # define queryset 

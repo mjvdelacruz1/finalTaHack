@@ -4,20 +4,134 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  <!-- ... Your existing HTML structure ... -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownToggle = document.getElementById("user-menu-button");
+    const dropdownMenu = document.getElementById("user-dropdown");
+
+    dropdownToggle.addEventListener("click", function () {
+      dropdownMenu.classList.toggle("hidden");
+      // Add logic to close other open dropdowns if needed
+    });
+
+    // Add logic to close the dropdown when clicking outside of it if needed
+    document.addEventListener("click", function (event) {
+      if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.classList.add("hidden");
+      }
+    });
+  });
+</script>
+
+<html lang="en scroll-smooth">
+  <style>
+    html {
+  scroll-behavior: smooth;
+    }
+   
+    #user-dropdown {
+      position: absolute;
+      top: calc(100% + 5px); 
+      right: 50px;
+      z-index: 999; 
+      
+    }
+
+   .inter{
+     font-family: 'Inter', sans-serif;
+   }
+   .k2d-eb{
+     font-family: 'K2D', sans-serif;
+   }
+   .poppins-eb{
+     font-family: 'Poppins', sans-serif;
+   }
+   </style>
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>&#128161;TaHack</title>
+    <title>&#128161;taHack</title>
 
     {% compress css %}
       <link rel="stylesheet" href="{% static 'src/output.css' %}">
     {% endcompress %}
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d162b72bfb.js" crossorigin="anonymous"></script>
+    
   </head>
-  <body class="bg-gray-100">
-    <header class="bg-green-950 text-gray-100 body-font">
-      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+  </head>
+  <body class="overflow-x-hidden bg-tahackBg">
+    <header class="bg-transparent body-font top-0 sticky z-50 w-screen">
+      <nav class="bg-tahack">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2">
+        <a href="http://127.0.0.1:8000/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <span class="self-center text-2xl k2d-eb text-white">taHack</span>
+        </a>
+        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+              <span class="sr-only">Open user menu</span>
+              <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+            </button>
+            
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+              <div class="px-4 py-3">
+                <!-- <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span> -->
+                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ request.user }}</span>
+              </div>
+              <ul class="py-2" aria-labelledby="user-menu-button">
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm  text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                </li>
+                <li>
+                  <a href="{% url 'users:logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                </li>
+              </ul>
+            </div>
+            <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border  rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
+            <li>
+              <a href="http://127.0.0.1:8000/#" class="inter block py-2 px-3 text-white rounded md:bg-transparent  md:p-0 hover:underline transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">Home</a>
+            </li>
+            <li>
+              <a href="http://127.0.0.1:8000/#fields" class="inter block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 hover:underline transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">Fields</a>
+            </li>
+            <li>
+              <a href="http://127.0.0.1:8000/#instructors" class="inter block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 hover:underline transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">Instructors</a>
+            </li>
+            <li>
+              <a href="http://127.0.0.1:8000/#contact" class="inter block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 hover:underline transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">Contact</a>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </nav>
+
+      <!-- <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 rounded-full" viewBox="0 0 24 24">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
@@ -33,60 +147,47 @@
           <span><a href="{% url 'users:logout' %}">   Logout</a></span>
         </nav>
         
-      </div>
+      </div> -->
     </header>
     {% block content %}
     {% endblock content %}
-    <footer class="text-gray-600 body-font">
-      <div class="container px-5 py-18 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-        <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-green-950 p-2 bg-slate-100 rounded-full" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
-            <span class="ml-3 text-xl">taHack</span>
-          </a>
-          <p class="mt-2 text-sm text-gray-500">Your digital companion on a transformative journey to explore the dynamic world of Information Technology (IT).</p>
-        </div>
-        <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
+    <footer class="text-gray-600 body-font ">
+      <div class="text-white bg-tahack">
+        <div class="container  px-5 py-9 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+          <div class="w-64 md:w-96 flex-shrink-0 md:mx-0 mx-auto text-center">
         
-          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Connect with us:</h2>
-            <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-              <a class="text-gray-500">
-                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                </svg>
-              </a>
-              <a class="ml-3 text-gray-500">
-                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                </svg>
-              </a>
-              <a class="ml-3 text-gray-500">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                </svg>
-              </a>
-              <a class="ml-3 text-gray-500">
-                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                </svg>
-              </a>
-            </span>
+              <p class="text-4xl md:text-6xl k2d-eb md:text-left text-center">taHack</p>
+            
+            <hr class="h-px my-2 bg-white border-2 rounded-full">
+            <h2 class="k2d-eb mt-2 md:text-left text-center">About Us!</h2>
+            <p class="mt-1 text-sm text-white poppins-eb md:text-left text-center">Your digital companion on a transformative journey to explore the dynamic world of Information Technology (IT). Build your path with different resources and roadmaps that taHack can offer.</p>
+          </div>
+          <div class="flex-grow flex flex-wrap md:mt-0 mt-10 md:text-left text-center ">
+            <div class="lg:w-1/4 md:w-1/2 w-full mx-auto ">
+              <h2 class="title-font font-medium  text-white tracking-widest text-sm mb-3 poppins-eb">Connect with us: </h2>
+              <nav class="list-none mb-10 ">
+                <ul class="flex flex-row ">
+                  <li>
+                    <a class=" text-white hover:text-gray-800 mx-4" href="#"><i class="fa-brands fa-discord fa-2x transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300" style="color: #ffffff;"></i></a>
+                  </li>
+                  <li>
+                    <a class=" text-white hover:text-gray-800 mx-4" href="#"><i class="fa-brands fa-square-facebook fa-2x transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300" style="color: #ffffff;"></i></a>
+                  </li>
+                  <li>
+                    <a class=" text-white hover:text-gray-800 mx-4" href="#"><i class="fa-brands fa-instagram fa-2x transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300" style="color: #ffffff;"></i></a>
+                  </li>
+                  <li>
+                    <a class=" text-white hover:text-gray-800 mx-4" href="#"><i class="fa-brands fa-linkedin fa-2x transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300" style="color: #ffffff;"></i></a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+           
           </div>
         </div>
+
       </div>
-      <div class="bg-green-950">
-        <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-          <p class="text-gray-100 text-sm text-center sm:text-left">© 2020 TaHack —
-            <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-100 ml-1" target="_blank">@TaHack</a>
-          </p>
-          
-        </div>
-      </div>
+    </div>
     </footer>
   </body>
 </html>
