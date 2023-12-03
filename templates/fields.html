@@ -16,14 +16,10 @@
               <div class="field-card">
                   <h2>{{ field.FieldTitle }}</h2>
                   <p>{{ field.FieldDescription }}</p>
-                  <p>Author: {{ field.Author }}</p>
-                  <p>Duration: {{ field.Duration }}</p>
-                  <p>Rating: {{ field.Rating }}</p>
-                  <p>Price: ${{ field.Price }}</p>
                   <img src="{{ field.image.url }}" alt="{{ field.FieldTitle }} Image">
                   <!-- Add a button/link to direct the user to the courses for this field -->
                   <button class="bg-teal-700">
-                    <a href="{% url 'show_courses' field.id %}">View Courses</a>
+                    <a href="{% url 'paths:show_courses' field.id %}">View Courses</a>
                   </button>
               </div>
           {% endfor %}

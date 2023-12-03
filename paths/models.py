@@ -1,6 +1,7 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 from datetime import timedelta
+from django.contrib.auth.models import User
 
 class FieldModel(models.Model):
     FieldTitle = models.CharField(max_length=255)
@@ -30,6 +31,18 @@ class LessonModel(models.Model):        #new
 
     def __str__(self):
         return self.title
+    
+
+class FeedbackModel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course  = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
+    comment = models.TextField()
+    rating = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return f"{self.course.header}: {self.rating}"
+
+
     # Add fields for your LessonModel, e.g., Lesson title, content, video link, etc.
 
 # class UserProfile(models.Model):

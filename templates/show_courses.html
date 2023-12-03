@@ -11,7 +11,13 @@
                 <div class="field-card">
                     <h2>{{ course.title }}</h2>
                     <p>{{ course.description }}</p>
+                    <p>Author: {{ course.Author }}</p>
+                    <p>Duration: {{ course.Duration }}</p>
+                    <p>Rating: {{ course.Rating }}</p>
+                    <p>Price: ${{ course.Price }}</p>
+                    <img src="{{ field.image.url }}" alt="{{ field.FieldTitle }} Image">
                     <!-- Add other course details as needed -->
+                    
                 </div>
             {% endfor %}
         </div>
