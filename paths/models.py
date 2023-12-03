@@ -28,6 +28,7 @@ class LessonModel(models.Model):        #new
     course = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)  # Add a field for the course title
     description = models.TextField()  # Add a field for the course description
+    link = models.URLField(default='No link available, please report thankn you')
 
     def __str__(self):
         return self.title
@@ -37,7 +38,14 @@ class FeedbackModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     course  = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
     comment = models.TextField()
-    rating = models.IntegerField(default=0)
+    rate_choices = (
+        (1,1),
+        (2,2),
+        (3,3),
+        (4,4),
+        (5,5)
+    )
+    rating = models.IntegerField(choices=rate_choices)
     
     def __str__(self):
         return self.comment
