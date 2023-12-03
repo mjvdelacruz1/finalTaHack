@@ -2,6 +2,8 @@ taHack/venv
 venv
 static/CACHE
 CACHE
+static/src/output.css
+output.css
 tahack/__pycache__
 __pycache__
 *.sqlite3

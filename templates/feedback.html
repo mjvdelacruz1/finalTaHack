@@ -1,6 +1,26 @@
 {% extends "a_base.html" %}
 
 {% block content %}
+<style>
+    .rating-list li {
+      float: right;
+      color: #ddd;
+      padding: 10px 5px;
+    }
+
+    .rating-list li:hover,
+    .rating-list li:hover ~ li {
+      color: orange;
+    }
+
+    .rating-list {
+      display: inline-block;
+      list-style: none;
+    }
+    .checked {
+        color: orange;
+    }
+</style>
 
     <h1>Feedback for {{ course.title }}</h1>
 
@@ -15,6 +35,7 @@
         </ul>
     {% else %}
         <p>No feedback available for this course.</p>
-    {% endif %}
+    {% endif %}  
+    
 
 {% endblock content %}
