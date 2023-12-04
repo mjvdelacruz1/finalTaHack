@@ -18,9 +18,18 @@ class CourseModel(models.Model):                    #new
     title = models.CharField(max_length=255)  # Add a field for the course title
     description = models.TextField()  # Add a field for the course description
     Author = models.CharField(max_length=100, default='Anonymous' )
-    Duration = models.DurationField(default=timedelta(days=0))
+    Duration = models.DurationField()
     Rating = models.IntegerField(default=0)
-    Price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    PRICE_CHOICES = [
+        ('Paid', 'Paid'),
+        ('Free', 'Free'),
+        ('Subscription', 'Subscription'),
+        ('Paid, & Free', 'Paid, & Free'),
+        ('Free, & Subscription', 'Free, & Subscription'),
+        ('Paid, & Subscription', 'Paid, & Subscription'),
+        ('Paid, Free, & Subscription', 'Paid, Free, & Subscription'),
+    ]
+    Price = models.CharField(max_length=50, choices=PRICE_CHOICES, blank=True, null=True)
     TYPE_CHOICES = [
         ('Major', 'Major'),
         ('Minor', 'Minor'),

@@ -1,47 +1,220 @@
 {% extends "a_base.html" %}
 
 {% block content %}
-<body style="background-image: url('https://drive.google.com/uc?id=1kzuT-b61dxBi5kxlKaSIi63w1CZDSoG7'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<section class="w-screen h-screen" id="home ">
+  <div class="arrange-home  w-screen absolute px-28 mt-52 ">
+      <div ><h1 class="k2d-eb prose-2xl text-tahack text-7xl md:text-9xl" >taHack</h1></div>
+      <div ><p class="poppins-eb text-accent text-lg md:text-2xl">Your digital companion on a transformative journey to explore the dynamic world of Information Technology (IT). 
+        <br>Build your path with different resources and roadmaps that taHack can offer.</p></div>
+      <button class="btn bg-tahack text-white mt-10 h-16 md:h-20 w-60 md:w-72 rounded-full transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 ration-300 shadow hover:shadow-xl k2d-eb text-3xl" onclick="window.location.href = '/login'" >Get Started</button>
+      <div class="flex-none mx-auto absolute mt-10" >
+          <ul class="flex flex-row">
+              <li>
+                  <button class="mx-4"><a href=""><i class="fa-brands fa-discord fa-4x  transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 ration-300" style="color: #4B5E51;"></i></a></button>
+              </li>
+              <li>
+                  <button class="mx-4"><a href=""><i class="fa-brands fa-square-facebook fa-4x transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 ration-300" style="color: #4B5E51;"></i></a></button>
+              </li>
+              <li>
+                  <button class="mx-4"><a href=""><i class="fa-brands fa-square-instagram fa-4x transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 ration-300" style="color: #4B5E51;"></i></a></button>
+              </li>
+              <li>
+                  <button class="mx-4"><a href=""><i class="fa-brands fa-linkedin fa-4x transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 ration-300" style="color: #4B5E51;"></i></a></button>
+              </li>
+          </ul>
+      </div>
+  </div>
+  <div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#4B5E51" fill-opacity="1" d="M0,192L48,170.7C96,149,192,107,288,106.7C384,107,480,149,576,186.7C672,224,768,256,864,250.7C960,245,1056,203,1152,208C1248,213,1344,267,1392,293.3L1440,320L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+  </div>
+</section>
 
-  <section class="text-gray-600 body-font" >
-    <div class="container px-5 py-24 mx-auto grid grid-rows-2 grid-flow-col gap-4">
-      <h1 class="sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5">taHack</h1>
-      <div class="md:w-3/5 md:pl-6">
-        <p class="leading-relaxed text-base">Your digital companion on a transformative journey to explore the dynamic world of Information Technology (IT). Build your path with different resources and roadmaps that taHack can offer.</p>
-        <div class="flex md:mt-4 mt-6">
-          <button class="inline-flex text-white bg-green-950 border-0 py-1 px-4 focus:outline-none hover:bg-green-600 rounded" onclick="window.location.href = '/login'">Enroll Now!</button>
+<section class="w-screen h-screen flex flex-col" id="fields">
+  <div class="container px-5  mx-auto pt-20">
+    <div class="flex flex-col text-center w-full">
+      <h1 class="text-5xl k2d-eb  text-gray-900 tracking-widest">Our Courses</h1>
+    </div>
+    <div class="field-list flex flex-wrap pt-10 justify-center items-center">
+      {% for field in fields %}
+      <div class="p-4 rounded-2xl">
+        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+          <img alt="team" class="flex-shrink-0 rounded-lg w-40 h-40 object-cover object-center sm:mb-0 mb-4" src="{{ field.image.url }}" alt="{{ field.FieldTitle }} Image">
+          <div class="flex-grow sm:pl-8">
+            <h2 class="poppins-eb text-lg text-gray-900">{{ field.FieldTitle }}</h2>
+            <p class="mb-4">{{ field.FieldDescription }}</p>
+            <a href="{% url 'paths:show_courses' field.id %}" class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700 transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 ration-300">
+              Learn more
+              <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+              </svg>
+            </a>
+          </div>
         </div>
-        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-          <a class="text-gray-500">
-            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-            </svg>
-          </a>
-          <a class="ml-3 text-gray-500">
-            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-            </svg>
-          </a>
-          <a class="ml-3 text-gray-500">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-            </svg>
-          </a>
-          <a class="ml-3 text-gray-500">
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-              <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-              <circle cx="4" cy="4" r="2" stroke="none"></circle>
-            </svg>
-          </a>
-        </span>
+      </div>
+      {% endfor %}
+    </div>
+      
+    
+  </div> 
 
-        <p class="leading-relaxed text-base">|   www.taHack.com</p>
+</section>
 
+
+<section class="w-screen h-screen  bg-tahack" id="instructors">
+  
+  <div class="container  pt-10 ">
+    <p class="k2d-eb text-center w-screen text-white text-4xl py-2">Meet our Instructors</p>
+    <div class="flex flex-wrap md:flex-row justify-center items-center w-screen mt-2">
+      
+
+      <div class="mr-16 h-72 hover:shadow-lg hover:shadow-white bg-white  rounded-2xl  w-56 flex flex-col justify-center items-center  transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">
+        <img class="rounded-t-2xl w-56 h-56 object-cover " src="https://scontent.fmnl8-1.fna.fbcdn.net/v/t39.30808-6/404388027_7442823699094986_3205818021558264028_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGMzwJ8XZ7cxKtkd6aDVjuuoamHE9JLJPyhqYcT0ksk_H9NqvZW6WYhWSdsxWPprjDeh9I8iOBP7WjzNSXzQIWT&_nc_ohc=2soPtjNYCyoAX-7Fhed&_nc_ht=scontent.fmnl8-1.fna&oh=00_AfA83x8cW9Wk88M0_XoNLe_3xWG18ff__6UBndqPb7yccg&oe=656B930B" alt="" />
+        <div class="flex flex-col justify-center items-center p-2"> 
+          <h2 class="title-font poppins-eb text-gray-900">Nina Francesca Bautista</h2>
+          <span class="inline-flex">
+            <a href="https://www.facebook.com/nfrncsbautista" target="_blank" class="text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a class="ml-3 text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-instagram fa-lg"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+
+      <div class=" mr-16 h-72 max-w-sm hover:shadow-lg hover:shadow-white bg-white rounded-2xl w-56 flex flex-col justify-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">
+        <img class="rounded-t-2xl w-56 h-56 object-cover" src="https://scontent.fmnl4-2.fna.fbcdn.net/v/t39.30808-6/318343165_2090879574445699_1865505645057354240_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=dd5e9f&_nc_eui2=AeHtu7VFScQlSDdybwEwCoLpJyuN2AH9VmEnK43YAf1WYQdAX2Bi1v5gQkotJozfuIvEQPT7amnHiHAEUPjgSLBJ&_nc_ohc=Wz08QWufL4QAX_fuHwB&_nc_ht=scontent.fmnl4-2.fna&oh=00_AfB6FLj_eyCg6P8uGHzQXpK_umY4jqiagiyCn0WveFXk7w&oe=656FF58B" alt="" />
+        <div class="flex flex-col justify-center items-center p-2"> 
+          <h2 class="title-font poppins-eb text-gray-900">Arjohn Capucion</h2>
+          <span class="inline-flex">
+            <a href="https://www.facebook.com/arjohn.capucion" target="_blank" class="text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a class="ml-3 text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-instagram fa-lg"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+
+      <div class=" mr-16 h-72 max-w-sm hover:shadow-lg hover:shadow-white bg-white  rounded-2xl  w-56 flex flex-col justify-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">
+        <img class="rounded-t-2xl w-56 h-56 object-cover" src="https://scontent-mnl1-2.xx.fbcdn.net/v/t39.30808-6/404446740_3328089854148730_5298886908834336072_n.jpg?stp=cp1_dst-jpg_e15_fr_q65&_nc_cat=109&ccb=1-7&_nc_sid=fa004d&efg=eyJpIjoidCJ9&_nc_eui2=AeFbB8kNFJdVOhUEkpuDbqnXIcAnZwbV8BIhwCdnBtXwEoOnom3UvNm_Y7mey8-cUYGJDEZ4yY28pNgm05pkliSL&_nc_ohc=d71DIihoF18AX9ZtM1u&_nc_ht=scontent-mnl1-2.xx&oh=00_AfDwY49WgeTQF3eXJEnHi00nxGrRdcCJCqxLOq73JLVhnQ&oe=6570B249" alt="" />
+        <div class="flex flex-col justify-center items-center p-2"> 
+          <h2 class="title-font poppins-eb text-gray-900">Baron De Vera</h2>
+          <span class="inline-flex">
+            <a href="https://www.facebook.com/baronmoralesdevera" target="_blank" class="text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a class="ml-3 text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-instagram fa-lg"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+      
+      
+
+    </div>
+    <div class="flex flex-wrap justify-center items-center w-screen">
+      <div class=" mr-16 mt-10 h-72 max-w-sm hover:shadow-lg hover:shadow-white bg-white rounded-2xl  w-56 flex flex-col justify-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">
+        <img class="rounded-t-2xl w-56 h-56 object-cover" src="https://scontent.fmnl8-1.fna.fbcdn.net/v/t1.15752-9/403439678_1107213107113798_7315749457334977103_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFc8d7_qqEOh4OgJsheTldJVFDpt7u7zalUUOm3u7vNqYpjC4Jhrw2tjSPsZMu7V1-CsNYiUmVykGAis1TFPM7f&_nc_ohc=OXIbZNE4DxQAX-GyrW-&_nc_oc=AQmGeCgP36aNNaWunp8bCABMcc_hvGyvmO-fNAr5Ig9lnLqJl23DYT20rRkJ21phBuY&_nc_ht=scontent.fmnl8-1.fna&oh=03_AdStyX9G1vfZHgIDgOv1FG85BBOFozMFN0W5HnuxHAPbjw&oe=658D76C0" alt="" />
+        <div class="flex flex-col justify-center items-center p-2"> 
+          <h2 class="title-font poppins-eb text-gray-900">Zyrhain Del Campo</h2>
+          <span class="inline-flex">
+            <a href="https://www.facebook.com/ZyDelCampo" target="_blank" class="text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a class="ml-3 text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-instagram fa-lg"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+
+      <div class=" mr-16 mt-10 max-w-sm hover:shadow-lg hover:shadow-white bg-white  rounded-2xl  w-56 flex flex-col justify-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">
+        <img class="rounded-t-2xl w-56 h-56 object-cover" src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t39.30808-6/324742111_558572349477610_5230088275234672465_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=9c7eae&_nc_eui2=AeF0isBvqer63BjQCAcfCR3QR7u35XvpzUZHu7fle-nNRk8PVd78OrcgAYFbki5GHl9ohRjigvjlw1bXbhrpt_j_&_nc_ohc=wp9BFb-sKBgAX_odYn7&_nc_ht=scontent.fmnl4-3.fna&oh=00_AfCCkCyc-8qjoLcCSzYJXWCnF6Ei84_i-yY1K8_TmoKtgw&oe=65709802" alt="" />
+        <div class=" flex flex-col justify-center items-center p-2"> 
+          <h2 class="title-font poppins-eb text-gray-900">Jovineil Dela Cruz</h2>
+          <span class="inline-flex">
+            <a href="https://www.facebook.com/jovdlcrz" target="_blank" class="text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a class="ml-3 text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-instagram fa-lg"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+
+      <div class="mr-16 mt-10  max-w-sm hover:shadow-lg hover:shadow-white bg-white rounded-2xl w-56 flex flex-col justify-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">
+        <img class="rounded-t-2xl w-56 h-56 object-cover " src="https://scontent.fmnl8-2.fna.fbcdn.net/v/t39.30808-6/383781704_6574953515922611_7065679623938080171_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeE5yKY3Ggcj2tMs08pwWN7BeBl2Hky_cmF4GXYeTL9yYTJk0CHc8Mc-7G86bvZ9DQ7f_W3dEhYN2jPJfd6Ftw-4&_nc_ohc=knhVDD6pJm8AX9DutyE&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfAsYjRR4qAn1uUtqXAxtqgrhRVQ2k0fbPmt74lKDBemKQ&oe=656B579F" alt="" />
+        <div class="flex flex-col justify-center items-center p-2"> 
+          <h1 class="title-font poppins-eb  text-gray-900">Rafael Ronquillo</h1>
+          <span class="inline-flex">
+            <a href="https://www.facebook.com/Spicywasabi38" target="_blank" class="text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a class="ml-3 text-gray-400 hover:text-tahack">
+              <i class="fa-brands fa-instagram fa-lg"></i>
+            </a>
+          </span>
+        </div>
       </div>
     </div>
-  </section>
-</body>
+  </div>
+</section>
+
+<section class="w-screen h-screen"  id="contact">
+
+    <div class="pt-20">
+      <div class="container mx-auto flex flex-col md:flex-row">
+        <div class="flex flex-col w-full lg:w-1/3 pl-24 pt-8 pb-8 justify-center">
+          <h1 class="text-7xl md:text-9xl  k2d-eb text-tahack text-left">taHack</h1>
+          <p class="text-3xl md:text-5xl  k2d-eb text-tahack">community</p>
+        </div>
+        <div class="flex flex-col w-full lg:w-2/3 justify-center">
+          <div class="container w-full px-4">
+            <div class="flex flex-wrap justify-center">
+              <div class="w-full lg:w-6/12 px-4">
+                <div
+                  class="relative flex flex-col min-w-0 break-words ">
+                  <div class="flex-auto p-5 lg:p-10">
+                    <h4 class="text-2xl mb-4 text-tahack k2d-eb">Got some question?</h4>
+                    <form id="feedbackForm" action="" method="">
+                      <div class="relative w-full mb-3">
+                        <input type="email" name="email" id="email" class="border-0 px-3 py-3 rounded text-sm shadow w-full
+                      bg-fields placeholder-gray-500  text-gray-800 outline-none focus:bg-gray-400 poppins-eb " placeholder="Email"
+                          style="transition: all 0.15s ease 0s;" required />
+                      </div>
+                      <div class="relative w-full mb-3">
+                        <input type="text" name="header" id="header" class="border-0 px-3 py-3 rounded text-sm shadow w-full
+                      bg-fields placeholder-gray-500 text-gray-800 outline-none focus:bg-gray-400 poppins-eb " placeholder="Header"
+                          style="transition: all 0.15s ease 0s;" required />
+                      </div>
+                        <div class="relative w-full mb-3">
+                          <textarea maxlength="300" name="feedback" id="feedback" rows="4"
+                          cols="80"
+                          class="resize-none poppins-eb border-0 px-3 py-3 bg-fields placeholder-gray-500 text-gray-800 rounded text-sm shadow focus:outline-none w-full"
+                          placeholder="Message" required></textarea>
+                        </div>
+                        <div class="text-center mt-6">
+                          <button id="feedbackBtn"
+                          class="bg-tahack text-white text-left mx-auto active:bg-fields text-sm font-bold uppercase px-6 py-3 k2d-eb rounded-full shadow hover:shadow-lg outline-none focus:outline-none transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300 "
+                          type="submit" style="transition: all 0.15s ease 0s;">Send
+                        </button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endblock content %}
+    </div>
+    
+  
+</section>
 
 
-{% endblock content %}
