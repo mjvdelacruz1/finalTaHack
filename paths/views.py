@@ -32,6 +32,7 @@ def show_courses(request, field_id):
     }
     return render(request, 'show_courses.html', context)
 
+    
 def fields(request):
     fields = FieldModel.objects.all()
     context = {
@@ -58,11 +59,39 @@ def contact(request):
     return render(request, 'contact.html')
 
 def landing(request):
-    return render(request, 'landing.html')
+    fields = FieldModel.objects.all()
+    context = {
+        'fields': fields
+    }
+    return render(request, 'landing.html', context)
+
+def submit_feedback(request, course_id):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            feedback.user = request.user
+            feedback.course_id = course_id
+            feedback.save()
+            return redirect('paths:feedback_success')
+    else:
+        form = FeedbackForm()
+    return render(request, 'submit_feedback.html', {'form': form})
+
+def feedback_success(request):
+    return render(request, 'feedback_success.html')
     
-# class CourseViewSet(viewsets.ModelViewSet): 
-#     # define queryset 
-#     queryset = CourseModel.objects.all() 
-      
-#     # specify serializer to be used 
-#     serializer_class = CourseSerializer 
+
+def submit_feedback(request, course_id):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            feedback.user = request.user
+            feedback.course_id = course_id
+            feedback.save()
+            return redirect('paths:show_feedback', course_id=course_id)
+    else:
+        form = FeedbackForm()
+    return render(request, 'submit_feedback.html', {'form': form})
+
