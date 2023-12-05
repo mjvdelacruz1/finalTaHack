@@ -1,4 +1,4 @@
-# finalTaHack
+f# finalTaHack
 Step 1: 
 Open terminal and go to any directories, desktop, documents, downloads
 - git clone "link"

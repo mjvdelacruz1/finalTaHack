@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <!-- ... Your existing HTML structure ... -->
+  
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -13,10 +13,10 @@
 
     dropdownToggle.addEventListener("click", function () {
       dropdownMenu.classList.toggle("hidden");
-      // Add logic to close other open dropdowns if needed
+      
     });
 
-    // Add logic to close the dropdown when clicking outside of it if needed
+    
     document.addEventListener("click", function (event) {
       if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
         dropdownMenu.classList.add("hidden");
@@ -27,6 +27,44 @@
 
 <html lang="en scroll-smooth">
   <style>
+     .scroll-buttons {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+    }
+
+    .left-button {
+      left: 10px; 
+    }
+
+    .right-button {
+      right: 10px; 
+    }
+    
+    #scrollableTable::-webkit-scrollbar {
+      width: 0; 
+    }
+    #scrollableTable {
+      overflow-x: auto; 
+      overflow-y: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none; 
+    }
+  #scrollableTable::-webkit-scrollbar {
+      display: none; 
+    }
+    #scrollableTable {
+      -ms-overflow-style: none; 
+      scrollbar-width: none; 
+      overflow-x: scroll;
+    }
+    #scrollableTable {
+    overflow-x: auto;
+    
+    scroll-behavior: smooth;
+   
+  }
     html {
   scroll-behavior: smooth;
     }
@@ -87,7 +125,7 @@
             
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
               <div class="px-4 py-3">
-                <!-- <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span> -->
+               
                 <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ request.user }}</span>
               </div>
               <ul class="py-2" aria-labelledby="user-menu-button">
@@ -131,23 +169,7 @@
         </div>
       </nav>
 
-      <!-- <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 rounded-full" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span class="ml-3 text-3xl text-gray-100">TaHack</span>
-        </a>
-        <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-          <a class="mr-5 hover:text-green-600" href="/maps">Map</a>
-          <a class="mr-5 hover:text-green-600" href="/fields">Courses</a>
-          <a class="mr-5 hover:text-green-600" href="/instructors">Instructors</a>
-          <a class="mr-5 hover:text-green-600" href="/contact">Contact</a>
-          <span>{{ request.user }}</span>
-          <span><a href="{% url 'users:logout' %}">   Logout</a></span>
-        </nav>
-        
-      </div> -->
+      
     </header>
     {% block content %}
     {% endblock content %}
