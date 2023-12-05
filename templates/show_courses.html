@@ -2,19 +2,13 @@
 
 {% block content %}
 <section class="text-gray-600 body-font">    
-  {% for course in courses %}
-    <section class="w-screen  text-gray-600 body-font overflow-hidden bg-tahackBg">
-        
-        <div class="container px-5 py-10 mx-auto">
-          <div class="lg:w-full mx-auto flex flex-wrap">
+
   {% for course in courses %}
     <section class="w-screen  text-gray-600 body-font overflow-hidden bg-tahackBg">
         
         <div class="container px-5 py-10 mx-auto">
           <div class="lg:w-full mx-auto flex flex-wrap">
             <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-              <h2 class="inter text-sm title-font text-gray-500 tracking-widest">{{ course.type }}</h2>
-              <h1 class="k2d-eb text-gray-900 text-3xl title-font font-medium mb-4">{{ course.title }}</h1>
               <h2 class="inter text-sm title-font text-gray-500 tracking-widest">{{ course.type }}</h2>
               <h1 class="k2d-eb text-gray-900 text-3xl title-font font-medium mb-4">{{ course.title }}</h1>
 
@@ -29,7 +23,6 @@
                 </button>
               </div>
 
-              <p class="leading-relaxed text-base mb-4">{{ course.description }}</p>
               <p class="leading-relaxed text-base mb-4">{{ course.description }}</p>
 
               <div class="flex border-t border-gray-200 py-2">
@@ -61,7 +54,6 @@
               </div>
             </div>
             <img alt="{{ course.title }} Image" class="shadow-md shadow-gray-700 rounded-2xl lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center " src="{{ course.image.url }}" >
-            <img alt="{{ course.title }} Image" class="shadow-md shadow-gray-700 rounded-2xl lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center " src="{{ course.image.url }}" >
           </div>
         </div>
 
@@ -69,7 +61,7 @@
         
       </section>
       {% endfor %}
-      {% endfor %}
+
 </section>
 
 {% endblock content %}
