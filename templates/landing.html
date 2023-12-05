@@ -29,35 +29,90 @@
   </div>
 </section>
 
-<section class="w-screen h-screen flex flex-col" id="fields">
-  <div class="container px-5  mx-auto pt-20">
-    <div class="flex flex-col text-center w-full">
-      <h1 class="text-5xl k2d-eb  text-gray-900 tracking-widest">Our Courses</h1>
-    </div>
-    <div class="field-list flex flex-wrap pt-10 justify-center items-center">
-      {% for field in fields %}
-      <div class="p-4 rounded-2xl">
-        <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-          <img alt="team" class="flex-shrink-0 rounded-lg w-40 h-40 object-cover object-center sm:mb-0 mb-4" src="{{ field.image.url }}" alt="{{ field.FieldTitle }} Image">
-          <div class="flex-grow sm:pl-8">
-            <h2 class="poppins-eb text-lg text-gray-900">{{ field.FieldTitle }}</h2>
-            <p class="mb-4">{{ field.FieldDescription }}</p>
-            <a href="{% url 'paths:show_courses' field.id %}" class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700 transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 ration-300">
-              Learn more
-              <svg class=" w-2.5 h-2.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-              </svg>
-            </a>
+<section class="bg-tahack w-screen h-screen " id="fields">
+  
+  <section class="w-full z-40 relative ">
+    <h1 class="k2d-eb absolute text-white pt-20 text-4xl left-0 right-0 text-center">Our Fields</h1>
+  </section>
+  <div class="scroll-buttons left-button">
+    <button class=" rounded-full w-10 h-10  bg-gray-200  cursor-pointer group focus:outline-none" onclick="scrollTable('left')"><i class="fa-solid fa-chevron-left fa-lg"></i></button>
+  </div>
+  <div class="scroll-buttons right-button ">
+    <button class="rounded-full w-10 h-10  bg-gray-200 cursor-pointer group focus:outline-none " onclick="scrollTable('right')"><i class="fa-solid fa-chevron-right fa-lg"></i></button>
+    
+  </div>
+    
+      <div class="flex w-screen h-screen overflow-hidden">
+        <div class="flex flex-row items-center justify-center w-full">
+          <div class="w-screen h-screen overflow-x-scroll" id="scrollableTable">
+            <table class="table justify-center">
+              <tbody>
+                <tr class="">
+                  <td class="h-screen text-sm text-center " >
+                    <div class="h-full flex flex-col justify-center items-center mx-auto">
+                      <div class=" h-2/6 rounded-2xl w-64 flex-col justify-center text-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ratio-300">
+                        
+                        <div class="pb-2 px-2">
+                          <a href="#">
+                            <h5 class="mb-1 text-base font-bold tracking-tight "></h5>
+                          </a>
+                          <p class="mb-1 font-normal text-xs "></p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+             
+                  {% for field in fields %}
+                  <td class="h-screen text-sm text-center text-gray-700" style="width: 50vw;">
+                    <div class="h-full  flex flex-col justify-center items-center mx-auto">
+                      <div class="group bg-white mr-16  hover:shadow-lg hover:shadow-white rounded-2xl w-64 flex-col justify-center text-center items-center transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ratio-300">
+                        <img class="rounded-t-2xl w-64 h-64 object-cover" src="{{ field.image.url }}" alt="{{ field.FieldTitle }} Image"/>
+                        <div  class="absolute rounded-2xl top-0 left-0 w-full h-0 flex flex-col justify-center items-center bg-tahackBg opacity-0 group-hover:h-full group-hover:opacity-75 duration-100">
+                          <a class="mt-5 px-8 py-3 text-black rounded-full hover:opacity-100 duration-300" href="{% url 'paths:show_courses' field.id %}">Learn more <i class="fa-solid fa-arrow-up-right-from-square" style="color: #000000;"></i></a>
+                        </div>
+                        <div class="pb-2 px-2">
+                          <a href="#">
+                            <h5 class="mb-1 text-base font-bold tracking-tight text-gray-900 dark:text-white">{{ field.FieldTitle }}</h5>
+                          </a>
+                          <p class="mb-1 font-normal text-xs text-gray-700 dark:text-gray-400">{{ field.FieldDescription }}</p>
+                          
+                        </div>
+                      </div>
+                      
+                    </div>
+                    
+                  </td>
+                  {% endfor %}
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-      {% endfor %}
-    </div>
       
     
-  </div> 
-
+  </div>
+    
+    
+  
+  <script>
+    function scrollTable(direction) {
+      const table = document.getElementById('scrollableTable');
+      const scrollDistance = 500; 
+      if (direction === 'left') {
+        table.scrollLeft -= scrollDistance;
+      } else if (direction === 'right') {
+        table.scrollLeft += scrollDistance;
+      }
+    }
+  </script>
+  
+  
+  
+  
 </section>
+
 
 
 <section class="w-screen h-screen  bg-tahack" id="instructors">
@@ -162,6 +217,8 @@
       </div>
     </div>
   </div>
+
+  
 </section>
 
 <section class="w-screen h-screen"  id="contact">
