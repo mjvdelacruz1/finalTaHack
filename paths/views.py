@@ -1,17 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import FieldModel, CourseModel, FeedbackModel, LessonModel
+from .models import FieldModel, CourseModel, FeedbackModel
 from .forms import FeedbackForm
 
 # Create your views here.
-
-def course_detail(request, course_id):
-    course = get_object_or_404(CourseModel, pk=course_id)
-    lessons = LessonModel.objects.filter(course=course)
-    context = {
-        'course': course,
-        'lessons': lessons
-    }
-    return render(request, 'lessons.html', context)
 
 def show_feedback(request, course_id):
     course = get_object_or_404(CourseModel, id=course_id)

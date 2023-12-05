@@ -9,3 +9,5 @@ __pycache__
 *.sqlite3
 paths/__pycache__
 __pycache__
+users/__pycache__
+__pycache__

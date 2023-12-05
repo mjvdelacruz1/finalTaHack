@@ -1,43 +1,46 @@
 {% extends "a_base.html" %}
 
+{% load static %}  <!-- Load the static tag at the top of your template -->
+
 {% block content %}
-<style>
-    .rating-list li {
-      float: right;
-      color: #ddd;
-      padding: 10px 5px;
-    }
+<section class="text-gray-600 body-font">    
+    <section class="text-gray-600 body-font overflow-hidden">
+        <div class="container px-5 py-4 mx-auto">
+            {% for feedback in feedbacks %}
+            <div class="lg:w-2/3 mx-auto">
+                <div class="rounded-lg h-full overflow-hidden p-6">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 object-cover object-center rounded-full" src="{% static 'images/user-avatar.png' %}" alt="User Avatar">
+                        <div class="ml-4">
+                            <h2 class="text-lg font-semibold text-gray-900">{{ feedback.user.username }}</h2>
+                            <p class="text-gray-500 text-sm">{{ feedback.created_at|date:"F d, Y" }}</p>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed text-gray-700 mb-4">{{ feedback.comment }}</p>
+                    <div class="border-t border-gray-200 pt-4">
+                        <div class="flex items-center">
+                            <div class="flex items-center mr-4">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5 text-yellow-500" viewBox="0 0 24 24">
+                                    <path d="M12 21l-1.45-1.405C5.4 17.312 2 13.328 2 9.5 2 6.462 4.462 4 7.5 4c1.74 0 3.41+.81 4.5 2.18A5.999 5.999 0 0 0 12 2a5.999 5.999 0 0 0 .5 9.18C14.09 8.81 15.76 8 17.5 8c3.038 0 5.5 2.462 5.5 5.5 0 3.828-3.4 7.812-8.55 10.095L12 21z"></path>
+                                </svg>
+                                <span class="ml-1">{{ feedback.rating }}/5</span>
+                            </div>
+                            <button class="text-green-500 hover:text-green-600">Helpful</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Add Rating Button -->
+        <div class="container px-5 py-4 mx-auto text-center">
+            <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                <a href="{% url 'paths:submit_feedback' course_id=course.id %}">Add Rating</a>
+            </button>
+        </div>
 
-    .rating-list li:hover,
-    .rating-list li:hover ~ li {
-      color: orange;
-    }
-
-    .rating-list {
-      display: inline-block;
-      list-style: none;
-    }
-    .checked {
-        color: orange;
-    }
-</style>
-
-<h1>Feedback for {{ course.title }}</h1>
-
-{% if feedbacks %}
-    <ul>
-        {% for feedback in feedbacks %}
-            <li>
-                <strong>{{ feedback.user.username }}</strong> - Rating: {{ feedback.rating }}
-                <p>{{ feedback.comment }}</p>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No feedback available for this course.</p>
-{% endif %}  
-
-<button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"><a href="{% url 'paths:submit_feedback' course_id=course.id %}">Add Rating</a></button>
-    
+      </section>
+</section>
 
 {% endblock content %}

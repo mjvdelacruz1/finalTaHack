@@ -1,105 +1,219 @@
-<!-- component -->
-{% extends "a_base.html" %}
-{% block content %}
-<!-- component -->
-<!-- Container -->
-<div class="flex flex-wrap min-h-screen w-full content-center justify-center py-10">
-  
-    <!-- Login component -->
-    <div class="flex shadow-md bg-green-800 rounded-lg my-8 mb-8">
-      <!-- Login form -->
-      <div class="flex flex-wrap content-center justify-center rounded-l-md bg-white" style="width: 24rem; height: 32rem;">
-        <div class="flex flex-col justify-center w-72 py-8">
-          <!-- Heading -->
-          <h1 class="text-xl font-semibold">Sign in to TaHack</h1>
-          
-          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-            <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-              <a class="text-gray-500">
-                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                </svg>
-              </a>
-              <a class="ml-3 text-gray-500">
-                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                </svg>
-              </a>
-              <a class="ml-3 text-gray-500">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                </svg>
-              </a>
-              <a class="ml-3 text-gray-500">
-                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                  <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                </svg>
-              </a>
-            </span>
-          </div>
-          
-          <form method="post" action="{% url 'users:loginView' %}">
-            {% csrf_token %}
-            
-            <div class="mb-4">
-              <label for="id_username" class="block text-sm font-medium text-gray-700">Username:</label>
-              <input type="text" id="id_username" name="username" placeholder="Enter Username here..." class="mt-1 p-2 block w-full border rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300">
-            </div>
-          
-            <div class="mb-4">
-              <label for="id_password" class="block text-sm font-medium text-gray-700">Password:</label>
-              <div class="relative">
-                  <input type="password" id="id_password" name="password" placeholder="Enter Password here..." class="mt-1 p-2 block w-full border rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300">
-                  <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                      <input type="checkbox" onclick="togglePasswordVisibility()" class="cursor-pointer mt-1">
-                      <label for="showPassword" class="ml-2 text-sm text-gray-700">Show Password</label>
-                  </div>
-              </div>
-          </div>
-          
-          <script>
-              function togglePasswordVisibility() {
-                  const passwordInput = document.getElementById('id_password');
-                  passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-              }
-          </script>
-          
-        
-            <div class="mb-6">
-                <button type="submit" class="w-full bg-slate-900 hover:bg-purple-900 text-white px-4 py-2 rounded-md">
-                    Sign in
-                </button>
-            </div>
-        
-            <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-full">
-                <img class="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA">
-                Sign in with Google
+
+
+    
+{% load compress %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <!-- ... Your existing HTML structure ... -->
+
+<script>
+  function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('password'
+      passwordInput.type = passwordInput.type === 'password' ; 'text' : 'password'; }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdownToggle = document.getElementById("user-menu-button");
+    const dropdownMenu = document.getElementById("user-dropdown");
+
+    dropdownToggle.addEventListener("click", function () {
+      dropdownMenu.classList.toggle("hidden");
+      // Add logic to close other open dropdowns if needed
+    });
+
+    // Add logic to close the dropdown when clicking outside of it if needed
+    document.addEventListener("click", function (event) {
+      if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.classList.add("hidden");
+      }
+    });
+  });
+</script>
+
+<html lang="en scroll-smooth">
+  <style>
+    html {
+  scroll-behavior: smooth;
+    }
+   
+    #user-dropdown {
+      position: absolute;
+      top: calc(100% + 5px); 
+      right: 50px;
+      z-index: 999; 
+      
+    }
+
+   .inter{
+     font-family: 'Inter', sans-serif;
+   }
+   .k2d-eb{
+     font-family: 'K2D', sans-serif;
+   }
+   .poppins-eb{
+     font-family: 'Poppins', sans-serif;
+   }
+   </style>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&#128161;taHack</title>
+
+    {% compress css %}
+      <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d162b72bfb.js" crossorigin="anonymous"></script>
+    
+  </head>
+  </head>
+  <body class="overflow-x-hidden bg-tahackBg">
+    <header class="bg-transparent body-font top-0 sticky z-50 w-screen">
+      <nav class="bg-tahack">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2">
+        <a href="http://127.0.0.1:8000/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <span class="self-center text-2xl k2d-eb text-white">taHack</span>
+        </a>
+        <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+              <span class="sr-only">Open user menu</span>
+              <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
             </button>
+            
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+              <div class="px-4 py-3">
+                <!-- <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span> -->
+                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ request.user }}</span>
+              </div>
+              <ul class="py-2" aria-labelledby="user-menu-button">
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm  text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                </li>
+                <li>
+                  <a href="{% url 'users:logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                </li>
+              </ul>
             </div>
-          </form>
-
-          {% for message in messages %}
-                <p id="messages">{{message}}</p>
-          {% endfor %}
-
-          <!-- Footer -->
-          <div class="text-center">
-            Don't have an account?
-            <a href="{% url 'users:signup' %}" class="ml-2" style="cursor: pointer; text-decoration: underline; color: blue;">Sign Up</a>
-          </div>
+            <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
         </div>
-      </div>
-  
-      <!-- Login banner -->
-      <div class="flex flex-wrap content-center justify-center rounded-lg" style="width: 24rem; height: 32rem;">
-        <img class="w-full h-full bg-center bg-no-repeat bg-cover rounded-lg" src="https://i.imgur.com/9l1A4OS.jpeg">
-      </div>
-  
-    </div>
-  
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border  rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
+            <li>
+              <a href="http://127.0.0.1:8000/#" class="inter block py-2 px-3 text-white rounded md:bg-transparent  md:p-0 hover:underline transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">Home</a>
+            </li>
+            <li>
+              <a href="http://127.0.0.1:8000/#fields" class="inter block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 hover:underline transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">Fields</a>
+            </li>
+            <li>
+              <a href="http://127.0.0.1:8000/#instructors" class="inter block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 hover:underline transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">Instructors</a>
+            </li>
+            <li>
+              <a href="http://127.0.0.1:8000/#contact" class="inter block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 hover:underline transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ration-300">Contact</a>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </nav>
 
+      <!-- <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 rounded-full" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="ml-3 text-3xl text-gray-100">TaHack</span>
+        </a>
+        <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+          <a class="mr-5 hover:text-green-600" href="/maps">Map</a>
+          <a class="mr-5 hover:text-green-600" href="/fields">Courses</a>
+          <a class="mr-5 hover:text-green-600" href="/instructors">Instructors</a>
+          <a class="mr-5 hover:text-green-600" href="/contact">Contact</a>
+          <span>{{ request.user }}</span>
+          <span><a href="{% url 'users:logout' %}">   Logout</a></span>
+        </nav>
+        
+      </div> -->
+    </header>
+
+    <div class="py-16">
+  <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-xl">
+      
+      <div class="w-full p-8 ">
+          <h2 class="text-2xl font-semibold text-gray-700 text-center">TaHack</h2>
+          <p class="text-xl text-gray-600 text-center">Welcome back!</p>
+          <a href="#" class="flex items-center justify-center mt-4 text-blue-50 rounded-lg shadow-md hover:bg-gray-100">
+              <div class="px-4 py-3">
+                  <svg class="h-6 w-6" viewBox="0 0 40 40">
+                      <path
+                          d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
+                          fill="#FFC107" />
+                      <path
+                          d="M5.25497 12.2425L10.7308 16.2583C12.2125 12.59 15.8008 9.99999 20 9.99999C22.5491 9.99999 24.8683 10.9617 26.6341 12.5325L31.3483 7.81833C28.3716 5.04416 24.39 3.33333 20 3.33333C13.5983 3.33333 8.04663 6.94749 5.25497 12.2425Z"
+                          fill="#FF3D00" />
+                      <path
+                          d="M20 36.6667C24.305 36.6667 28.2167 35.0192 31.1742 32.34L26.0159 27.975C24.3425 29.2425 22.2625 30 20 30C15.665 30 11.9842 27.2359 10.5975 23.3784L5.16254 27.5659C7.92087 32.9634 13.5225 36.6667 20 36.6667Z"
+                          fill="#4CAF50" />
+                      <path
+                          d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
+                          fill="#1976D2" />
+                  </svg>
+              </div>
+              <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Google</h1>
+          </a>
+          <div class="mt-4 flex items-center justify-between">
+              <span class="border-b w-1/5 lg:w-1/4"></span>
+              <a href="#" class="text-xs text-center text-gray-500 uppercase">or login with email</a>
+              <span class="border-b w-1/5 lg:w-1/4"></span>
+          </div>
+          <div class="mt-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+              <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="email" />
+          </div>
+                <div class="mt-4">
+  <div class="flex justify-between">
+      <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+      <a href="#" class="text-xs text-gray-500">Forgot Password?</a>
   </div>
+  <div class="relative">
+      <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" id="password" />
+      <input type="checkbox" onclick="togglePasswordVisibility()" class="cursor-pointer mt-1">
+      <label for="show_password" class="text-gray-500 text-xs cursor-pointer">Show Password</label>
+  </div>
+</div>
 
-    {% endblock content %}
+
+
+          <div class="mt-8">
+              <button class="bg-green-600 text-white font-bold py-2 px-4 w-full rounded hover:bg-green-700">Login</button>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+              <span class="border-b w-1/5 md:w-1/4"></span>
+              <a href="{% url 'users:signup' %}" class="text-xs text-green-700 uppercase">or sign up</a>
+              <span class="border-b w-1/5 md:w-1/4"></span>
+          </div>
+      </div>
+  </div>
+</div>
+  </body>
+</html>

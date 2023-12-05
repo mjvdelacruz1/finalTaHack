@@ -3,6 +3,8 @@ from cloudinary.models import CloudinaryField
 from datetime import timedelta
 from django.contrib.auth.models import User
 from django.db.models import Avg
+from django.db.models import Sum
+
 
 class FieldModel(models.Model):
     FieldTitle = models.CharField(max_length=255)
@@ -18,8 +20,10 @@ class CourseModel(models.Model):                    #new
     title = models.CharField(max_length=255)  # Add a field for the course title
     description = models.TextField()  # Add a field for the course description
     Author = models.CharField(max_length=100, default='Anonymous' )
-    Duration = models.DurationField()
     Rating = models.IntegerField(default=0)
+    link = models.URLField(default='No link available, please report thankn you')
+    created_at = models.DateTimeField(auto_now_add=True)
+    
     PRICE_CHOICES = [
         ('Paid', 'Paid'),
         ('Free', 'Free'),
@@ -30,29 +34,32 @@ class CourseModel(models.Model):                    #new
         ('Paid, Free, & Subscription', 'Paid, Free, & Subscription'),
     ]
     Price = models.CharField(max_length=50, choices=PRICE_CHOICES, blank=True, null=True)
+
     TYPE_CHOICES = [
-        ('Major', 'Major'),
-        ('Minor', 'Minor'),
+        ('Beginner', 'Beginner'),
+        ('Intermidiate', 'Intermidiate'),
+        ('Advanced', 'Advanced'),
     ]
 
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='Major')
+    type = models.CharField(max_length=25, choices=TYPE_CHOICES, default='Major')
     
     def update_average_rating(self):
         average_rating = self.feedbackmodel_set.aggregate(Avg('rating'))['rating__avg']
-        self.Rating = round(average_rating, 2) if average_rating else 0
+        self.Rating = round(average_rating, 3) if average_rating else 0
         self.save()
 
     def __str__(self):
         return self.title
 
-class LessonModel(models.Model):        #new
-    course = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
-    title = models.CharField(max_length=255)  # Add a field for the course title
-    description = models.TextField()  # Add a field for the course description
-    link = models.URLField(default='No link available, please report thankn you')
+# class LessonModel(models.Model):        #new
+#     course = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
+#     title = models.CharField(max_length=255)  # Add a field for the course title
+#     description = models.TextField()  # Add a field for the course description
+    
+#     # created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.title
+#     def __str__(self):
+#         return self.title
     
 
 class FeedbackModel(models.Model): #feedback solely for courses
@@ -81,6 +88,16 @@ class FeedbackModel(models.Model): #feedback solely for courses
             
     def __str__(self):
         return self.comment
+
+
+class Bookmarks(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course  = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.FieldTitle
+
+
 
 
     # Add fields for your LessonModel, e.g., Lesson title, content, video link, etc.
