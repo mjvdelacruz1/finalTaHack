@@ -90,16 +90,6 @@ class FeedbackModel(models.Model): #feedback solely for courses
         return self.comment
 
 
-class Bookmarks(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course  = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.FieldTitle
-
-
-
-
     # Add fields for your LessonModel, e.g., Lesson title, content, video link, etc.
 
 # class UserProfile(models.Model):

@@ -4,13 +4,22 @@ from .forms import FeedbackForm
 
 # Create your views here.
 
+from django.db.models import Avg
+
 def show_feedback(request, course_id):
     course = get_object_or_404(CourseModel, id=course_id)
     feedbacks = FeedbackModel.objects.filter(course=course)
+    courses = CourseModel.objects.all()
+    
+    # Calculate the average rating for the course
+    average_rating = course.feedbackmodel_set.aggregate(Avg('rating'))['rating__avg']
+    course_rating = round(average_rating, 3) if average_rating else 0
     
     context = {
         'course': course,
         'feedbacks': feedbacks,
+        'courses': courses,
+        'course_rating': course_rating,  # Add this to the context
     }
     return render(request, 'feedback.html', context)
 
