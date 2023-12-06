@@ -1,10 +1,41 @@
-<!-- submit_feedback.html -->
 {% extends "a_base.html" %}
+{% load static %}
+
 {% block content %}
-    <h2>Submit Feedback</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+<style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ensure the page takes at least the viewport height */
+      margin: 0; /* Remove default margin to avoid unwanted space */
+    }
+  
+    .wrapper {
+      flex-grow: 1; /* Allow the content to expand and fill the remaining space */
+    }
+  
+  </style>
+  <div class="wrapper">
+    <section class="text-gray-600 body-font">
+      <section class="text-gray-600 body-font overflow-hidden">
+        <div class="container px-5 py-4 mx-auto">
+          <div class="lg:w-2/3 mx-auto">
+            <div class="rounded-lg h-full overflow-hidden p-6">
+              <h2 class="text-3xl font-semibold text-gray-900 mb-4">Submit Feedback</h2>
+              <form method="post">
+                {% csrf_token %}
+                {{ form.comment.label_tag }}
+                <textarea class="w-full h-32 p-2 mb-4 border rounded-lg focus:outline-none focus:border-indigo-500" name="comment" id="comment" placeholder="Enter your feedback here">{{ form.comment.value }}</textarea>
+                {{ form.rating.label_tag }}
+                {{ form.rating }}
+                <div class="text-center">
+                  <button class="inline-flex text-white bg-tahack border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg" type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
 {% endblock %}
