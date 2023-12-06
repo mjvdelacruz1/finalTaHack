@@ -51,15 +51,14 @@ class CourseModel(models.Model):                    #new
     def __str__(self):
         return self.title
 
-# class LessonModel(models.Model):        #new
-#     course = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
-#     title = models.CharField(max_length=255)  # Add a field for the course title
-#     description = models.TextField()  # Add a field for the course description
-    
-#     # created_at = models.DateTimeField(auto_now_add=True)
+class LessonModel(models.Model):        #new
+    course = models.ForeignKey(CourseModel, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)  # Add a field for the course title
+    description = models.TextField()  # Add a field for the course description
+    created_at = models.DateTimeField(auto_now_add=True)
 
-#     def __str__(self):
-#         return self.title
+    def __str__(self):
+        return self.title
     
 
 class FeedbackModel(models.Model): #feedback solely for courses

@@ -17,4 +17,6 @@ class FeedbackModelAdmin(admin.ModelAdmin):
     list_display = ['user', 'course', 'comment', 'rating']
     readonly_fields = ['created_at']
 
+
+
 admin.site.unregister(Group)

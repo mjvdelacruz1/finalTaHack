@@ -93,19 +93,10 @@
             
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
               <div class="px-4 py-3">
-                <!-- <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span> -->
+                
                 <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ request.user }}</span>
               </div>
               <ul class="py-2" aria-labelledby="user-menu-button">
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm  text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
-                </li>
                 <li>
                   <a href="{% url 'users:logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                 </li>
@@ -157,12 +148,12 @@
     </header>
 
 
-    <div class="flex flex-wrap min-h-screen w-full content-center justify-center py-10">
+    <div class="flex flex-wrap shadow-2xl shadow-slate-800  min-h-screen w-full content-center justify-center py-10">
   
       <!-- Login component -->
-      <div class="flex shadow-md bg-green-800 rounded-lg my-8 mb-8">
+      <div class="flex rounded-2xl shadow-2xl shadow-slate-800 my-8 mb-8">
         <!-- Login form -->
-        <div class="flex flex-wrap content-center justify-center rounded-l-md bg-white" style="width: 24rem; height: 32rem;">
+        <div class="flex flex-wrap content-center shadow  shadow-slate-800 justify-center rounded-2xl bg-white" style="width: 24rem; height: 32rem;">
           <div class="flex flex-col justify-center w-72 py-8">
             <!-- Heading -->
             <!-- <h1 class="text-xl font-semibold">Sign in to TaHack</h1> -->
@@ -206,16 +197,16 @@
               <!-- dito start -->
               <div class="py-16">
                 
-                <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-xl">
+                <div class="flex shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-xl">
                     
                     <div class="w-full p-8 ">
-                        <h2 class="text-2xl font-semibold text-gray-700 text-center">TaHack</h2>
-                        <p class="text-xl text-gray-600 text-center">Welcome back!</p>
+                        <h2 class="text-4xl font-semibold text-gray-700 text-center k2d-eb">taHack</h2>
+                        <p class="text-xl text-gray-600 text-center poppins-eb m-2">Welcome back!</p>
               
-                        <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-full">
+                        <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-3 rounded-full mt-2">
                           <img class="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA">
                           {%load socialaccount %}
-                          <a href="{% provider_login_url 'google' %}?next=/">Sign in With Google </a>
+                          <a href="{% provider_login_url 'google' %}?next=/" class="inter">Sign in With Google </a>
                       </button>
 
                         
@@ -223,7 +214,7 @@
               
                         <div class="mt-4 flex items-center justify-between">
                             <span class="border-b w-1/5 lg:w-1/4"></span>
-                            <a href="#" class="text-xs text-center text-gray-500 uppercase">or login with email</a>
+                            <a href="#" class="text-xs text-center text-gray-500 uppercase poppins-eb">or login with email</a>
                             <span class="border-b w-1/5 lg:w-1/4"></span>
                         </div>
               
@@ -243,7 +234,7 @@
 
                       <div class="pr-3 flex">
                           <input type="checkbox" onclick="togglePasswordVisibility()" class="cursor-pointer mt-1">
-                          <label for="showPassword" class="text-gray-500 text-xs cursor-pointer">Show Password</label>
+                          <label for="showPassword" class="text-gray-500 text-xs cursor-pointer inter">Show Password</label>
                       </div>
 
                       <script>
