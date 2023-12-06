@@ -10,8 +10,8 @@
 
 <script>
   function togglePasswordVisibility() {
-      const passwordInput = document.getElementById('password'
-      passwordInput.type = passwordInput.type === 'password' ; 'text' : 'password'; }
+    const passwordInput = document.getElementById('password');
+    passwordInput.type = (passwordInput.type === 'password') ? 'text' : 'password';}
 
   document.addEventListener("DOMContentLoaded", function () {
     const dropdownToggle = document.getElementById("user-menu-button");
@@ -156,64 +156,149 @@
       </div> -->
     </header>
 
-    <div class="py-16">
-  <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-xl">
-      
-      <div class="w-full p-8 ">
-          <h2 class="text-2xl font-semibold text-gray-700 text-center">TaHack</h2>
-          <p class="text-xl text-gray-600 text-center">Welcome back!</p>
-          <a href="#" class="flex items-center justify-center mt-4 text-blue-50 rounded-lg shadow-md hover:bg-gray-100">
-              <div class="px-4 py-3">
-                  <svg class="h-6 w-6" viewBox="0 0 40 40">
-                      <path
-                          d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
-                          fill="#FFC107" />
-                      <path
-                          d="M5.25497 12.2425L10.7308 16.2583C12.2125 12.59 15.8008 9.99999 20 9.99999C22.5491 9.99999 24.8683 10.9617 26.6341 12.5325L31.3483 7.81833C28.3716 5.04416 24.39 3.33333 20 3.33333C13.5983 3.33333 8.04663 6.94749 5.25497 12.2425Z"
-                          fill="#FF3D00" />
-                      <path
-                          d="M20 36.6667C24.305 36.6667 28.2167 35.0192 31.1742 32.34L26.0159 27.975C24.3425 29.2425 22.2625 30 20 30C15.665 30 11.9842 27.2359 10.5975 23.3784L5.16254 27.5659C7.92087 32.9634 13.5225 36.6667 20 36.6667Z"
-                          fill="#4CAF50" />
-                      <path
-                          d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
-                          fill="#1976D2" />
+
+    <div class="flex flex-wrap min-h-screen w-full content-center justify-center py-10">
+  
+      <!-- Login component -->
+      <div class="flex shadow-md bg-green-800 rounded-lg my-8 mb-8">
+        <!-- Login form -->
+        <div class="flex flex-wrap content-center justify-center rounded-l-md bg-white" style="width: 24rem; height: 32rem;">
+          <div class="flex flex-col justify-center w-72 py-8">
+            <!-- Heading -->
+            <!-- <h1 class="text-xl font-semibold">Sign in to TaHack</h1> -->
+            
+            <!-- <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+
+              <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+
+                <a class="text-gray-500">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
                   </svg>
+                </a>
+
+                <a class="ml-3 text-gray-500">
+                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                  </svg>
+                </a>
+
+                <a class="ml-3 text-gray-500">
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                  </svg>
+                </a>
+                
+                <a class="ml-3 text-gray-500">
+                  <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                    <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                  </svg>
+                </a>
+
+              </span>
+
+            </div> -->
+            
+            <form method="post" action="{% url 'users:loginView' %}">
+              {% csrf_token %}
+              <!-- dito start -->
+              <div class="py-16">
+                
+                <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-xl">
+                    
+                    <div class="w-full p-8 ">
+                        <h2 class="text-2xl font-semibold text-gray-700 text-center">TaHack</h2>
+                        <p class="text-xl text-gray-600 text-center">Welcome back!</p>
+              
+                        <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-full">
+                          <img class="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA">
+                          {%load socialaccount %}
+                          <a href="{% provider_login_url 'google' %}?next=/">Sign in With Google </a>
+                      </button>
+
+                        
+              
+              
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="border-b w-1/5 lg:w-1/4"></span>
+                            <a href="#" class="text-xs text-center text-gray-500 uppercase">or login with email</a>
+                            <span class="border-b w-1/5 lg:w-1/4"></span>
+                        </div>
+              
+              
+                        <!-- done email username -->
+                        <div class="mt-4">
+                            <label for="id_username" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                            <input  placeholder="Enter Username here..." id="id_username" name="username" class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" />
+                        </div>
+              
+              <!-- done pword -->
+                    <div class="mt-4 mb-4">
+                  <label for="id_password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+
+                      <input type="password" id="id_password" name="password" placeholder="Enter Password here..." class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none">
+                      <a href="#" class="text-xs text-gray-500 text-center">Forgot Password?</a>
+
+                      <div class="pr-3 flex">
+                          <input type="checkbox" onclick="togglePasswordVisibility()" class="cursor-pointer mt-1">
+                          <label for="showPassword" class="text-gray-500 text-xs cursor-pointer">Show Password</label>
+                      </div>
+
+                      <script>
+                        function togglePasswordVisibility() {
+                            const passwordInput = document.getElementById('id_password');
+                            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+                        }
+                      </script>
+
+                                  
+              
+   
               </div>
-              <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Google</h1>
-          </a>
-          <div class="mt-4 flex items-center justify-between">
-              <span class="border-b w-1/5 lg:w-1/4"></span>
-              <a href="#" class="text-xs text-center text-gray-500 uppercase">or login with email</a>
-              <span class="border-b w-1/5 lg:w-1/4"></span>
-          </div>
-          <div class="mt-4">
-              <label class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
-              <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="email" />
-          </div>
-                <div class="mt-4">
-  <div class="flex justify-between">
-      <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-      <a href="#" class="text-xs text-gray-500">Forgot Password?</a>
-  </div>
-  <div class="relative">
-      <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" id="password" />
-      <input type="checkbox" onclick="togglePasswordVisibility()" class="cursor-pointer mt-1">
-      <label for="show_password" class="text-gray-500 text-xs cursor-pointer">Show Password</label>
-  </div>
-</div>
+              
+              <div class="mb-6">
+                <button class="w-full bg-slate-900 hover:bg-green-900 text-white px-4 py-2 rounded-md">Login</button>
+              </div>
+                         
+              
+  
+              
+                        <div class="text-center">
+                          Don't have an account?
+                          <a href="{% url 'users:signup' %}" class="ml-2" style="cursor: pointer; text-decoration: underline; color: blue;">Sign Up</a>
+                        </div>
+              
 
+                      
+              
+              
+                    </div>
+                </div>
+              </div>
 
-
-          <div class="mt-8">
-              <button class="bg-green-600 text-white font-bold py-2 px-4 w-full rounded hover:bg-green-700">Login</button>
+            </form>
+<!--   
+            {% for message in messages %}
+                  <p id="messages">{{message}}</p>
+            {% endfor %}
+   -->
+            <!-- Footer -->
           </div>
-          <div class="mt-4 flex items-center justify-between">
-              <span class="border-b w-1/5 md:w-1/4"></span>
-              <a href="{% url 'users:signup' %}" class="text-xs text-green-700 uppercase">or sign up</a>
-              <span class="border-b w-1/5 md:w-1/4"></span>
-          </div>
+        </div>
+    
       </div>
-  </div>
-</div>
+    
+  
+    </div>
+
+    
+
+
   </body>
 </html>
+
+
+
+
