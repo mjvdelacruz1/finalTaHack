@@ -4,39 +4,31 @@
 
 {% block content %}
 
+<div class="">
+    {% for course in courses %}
+    <section class="w-screen text-gray-600 body-font overflow-hidden bg-tahackBg">
+        <!-- Your existing code for course details goes here -->
+           
+    <div class="flex items-center container px-5 py-10 mx-auto">
+        <div class="lg:w-full mx-auto flex flex-wrap">
+          <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+            <h2 class="inter text-sm title-font text-gray-500 tracking-widest">{{ course.type }}</h2>
+            <h1 class="k2d-eb text-gray-900 text-3xl title-font font-medium mb-4">{{ course.title }}</h1>
+  
+            <div class="flex mb-4">
+              <button class="poppins-eb flex-grow hover:text-tahack border-b-2 hover:border-tahack py-2 text-lg px-1">
+                  <a href="{% url 'paths:show_courses' course.field.id %}" class="poppins-eb" >Description</a>
+              </button>
+              <button class="poppins-eb flex-grow hover:text-tahack border-b-2 hover:border-tahack py-2 text-lg px-1">
+                  <a href="{% url 'paths:show_feedback' course.id %}" class="poppins-eb">Reviews</a>
+              </button>
+            </div>
 
-
-<!-- <h1>{{ course.title }}</h1>
-<p>Course Rating: {{ course_rating }}</p>
-
-
-{% for feedback in feedbacks %}
-    <p>{{ feedback.comment }} - Rating: {{ feedback.rating }}</p>
-{% endfor %} -->
-
-
-{% for course in courses %}
-<section class="w-screen  text-gray-600 body-font overflow-hidden bg-tahackBg">
-    
-    <div class="container px-5 py-10 mx-auto">
-      <div class="lg:w-full mx-auto flex flex-wrap">
-        <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-          <h2 class="inter text-sm title-font text-gray-500 tracking-widest">{{ course.type }}</h2>
-          <h1 class="k2d-eb text-gray-900 text-3xl title-font font-medium mb-4">{{ course.title }}</h1>
-
-          <div class="flex mb-4">
-            <button class="poppins-eb flex-grow hover:text-green-500 border-b-2 hover:border-green-500 py-2 text-lg px-1">
-                <a href="{% url 'paths:show_courses' course.field.id %}" >Description</a>
-            </button>
-            <button class="poppins-eb flex-grow hover:text-green-500 border-b-2 hover:border-green-500 py-2 text-lg px-1">
-                <a href="{% url 'paths:show_feedback' course.id %}">Reviews</a>
-            </button>
-          </div>
-       
-       
-          <div class="container px-5 py-4 mx-auto">
-   <div class="container px-5 py-4 mx-auto">
+        <!-- Filter feedbacks for the current course -->
+        {% with feedbacks=course.feedbackmodel_set.all %}
+        <div class="container px-5 py-4 mx-auto">
             {% for feedback in feedbacks %}
+            <!-- Your existing code for displaying feedbacks goes here -->
             <div class="lg:w-2/3 mx-auto">
                 <div class="rounded-lg h-full overflow-hidden p-6">
                     <div class="flex items-center mb-4">
@@ -62,18 +54,18 @@
             </div>
             {% endfor %}
         </div>
-</div>
+        {% endwith %}
 
-
-        <!-- Add Rating Button -->
+        <!-- Add Rating Button and other course details -->
+        <!-- Your existing code for the rating button, price, and image goes here -->
         <div class="container px-5 py-4 mx-auto text-center">
-            <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+            <button class="inline-flex text-white bg-tahack border-0 py-2 px-6 focus:outline-none hover:bg-tahackSecond rounded text-lg">
                 <a href="{% url 'paths:submit_feedback' course_id=course.id %}">Add Rating</a>
             </button>
         </div>
           <div class="flex">
-              <span class="title-font font-medium text-2xl text-gray-900">$ {{ course.Price }}</span>
-              <button class="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">
+              <span class="title-font font-medium text-2xl text-gray-900 k2d-eb"> {{ course.Price }}</span>
+              <button class="flex ml-auto text-white bg-tahack border-0 py-2 px-6 focus:outline-none hover:bg-tahackSecond rounded">
               <a  href="{{course.link}}">
                   View Lessons
               </a>
@@ -85,19 +77,9 @@
       </div>
 
     </section>
-{% endfor %}
 
-
- <section class="text-gray-600 body-font">    
-    <section class="text-gray-600 body-font overflow-hidden">
-
-
-
-    
     </section>
-  
-</section>
+    {% endfor %}
+</div>
 
 {% endblock content %}
-
-

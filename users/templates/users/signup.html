@@ -1,8 +1,3 @@
-
-
-    
-
-    
 {% load compress %}
 {% load static %}
 
@@ -10,28 +5,7 @@
 <html lang="en">
   <!-- ... Your existing HTML structure ... -->
 
-<script>
-  function togglePasswordVisibility() {
-      const passwordInput = document.getElementById('password'
-      passwordInput.type = passwordInput.type === 'password' ; 'text' : 'password'; }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const dropdownToggle = document.getElementById("user-menu-button");
-    const dropdownMenu = document.getElementById("user-dropdown");
-
-    dropdownToggle.addEventListener("click", function () {
-      dropdownMenu.classList.toggle("hidden");
-      // Add logic to close other open dropdowns if needed
-    });
-
-    // Add logic to close the dropdown when clicking outside of it if needed
-    document.addEventListener("click", function (event) {
-      if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-        dropdownMenu.classList.add("hidden");
-      }
-    });
-  });
-</script>
 
 <html lang="en scroll-smooth">
   <style>
@@ -81,6 +55,8 @@
   </head>
   </head>
   <body class="overflow-x-hidden bg-tahackBg">
+
+
     <header class="bg-transparent body-font top-0 sticky z-50 w-screen">
       <nav class="bg-tahack">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-2">
@@ -88,10 +64,6 @@
             <span class="self-center text-2xl k2d-eb text-white">taHack</span>
         </a>
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-              <span class="sr-only">Open user menu</span>
-              <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
-            </button>
             
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
               <div class="px-4 py-3">
@@ -99,15 +71,7 @@
                 <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ request.user }}</span>
               </div>
               <ul class="py-2" aria-labelledby="user-menu-button">
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm  text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                </li>
-                <li>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
-                </li>
+                
                 <li>
                   <a href="{% url 'users:logout' %}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
                 </li>
@@ -139,83 +103,63 @@
         </div>
       </nav>
 
-      <!-- <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="/">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 rounded-full" viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span class="ml-3 text-3xl text-gray-100">TaHack</span>
-        </a>
-        <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-          <a class="mr-5 hover:text-green-600" href="/maps">Map</a>
-          <a class="mr-5 hover:text-green-600" href="/fields">Courses</a>
-          <a class="mr-5 hover:text-green-600" href="/instructors">Instructors</a>
-          <a class="mr-5 hover:text-green-600" href="/contact">Contact</a>
-          <span>{{ request.user }}</span>
-          <span><a href="{% url 'users:logout' %}">   Logout</a></span>
-        </nav>
-        
-      </div> -->
-    </header>
-    <div class="bg-green-500 h-16 w-full flex items-center justify-center">
-  <p class="text-white">This is the green centered div</p>
-</div>
-<div class="py-16">
-  <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-xl">
       
-    <div class="w-full p-8 ">
-    <h2 class="text-2xl font-bold mb-4">Create Account</h2>
-    <p class="text-gray-600 mb-6">Enter your personal details and start your journey with us.</p>
+    </header>
+<div class="pt-16">
+  <div class=" bg-white shadow-md shadow-black rounded-2xl  overflow-hidden  w-full mx-auto max-w-sm lg:max-w-xl">
+      
+    <div class="w-full flex flex-col justify-center p-5">
+    <h2 class="text-2xl font-bold  k2d-eb mx-auto">Create Account</h2>
+    <p class="text-gray-600 mb-6 poppins-eb text-center">Enter your personal details and start your journey with us.</p>
 
     <!-- Form -->
-    <form class="flex flex-wrap -mx-4 items-center justify-center">
+    <form class="flex flex-wrap -mx-4 items-center justify-center" method="POST" class="mt-4">
+      {% csrf_token %}
 
         <!-- First Name -->
         <div class="mb-4 w-full md:w-1/2 px-4">
-            <label for="first_name" class="block text-gray-600 text-sm font-semibold mb-2">First Name</label>
-            <input type="text" id="first_name" name="first_name" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+            <label for="{{ form.first_name.id_for_label }}" class="block text-gray-600 text-sm font-semibold mb-2 inter">First Name</label>
+            <input type="text" id="{{ form.first_name.id }}" name="{{ form.first_name.name }}" placeholder="Firstname" class="inter w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
         </div>
 
         <!-- Last Name -->
         <div class="mb-4 w-full md:w-1/2 px-4">
-            <label for="last_name" class="block text-gray-600 text-sm font-semibold mb-2">Last Name</label>
-            <input type="text" id="last_name" name="last_name" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+            <label for="{{ form.last_name.id_for_label }}" class="block text-gray-600 text-sm font-semibold mb-2 inter">Last Name</label>
+            <input type="text" id="{{ form.last_name.id }}" name="{{ form.last_name.name }}" placeholder="Lastname"class="inter w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
         </div>
-
-
-        <form method="post" action="{% url 'users:loginView' %}">
-        {% csrf_token %}
+        
         
         <!-- Username -->
         <div class="mb-4 w-full md:w-1/2 px-4">
-            <label for="username" class="block text-gray-600 text-sm font-semibold mb-2">Username</label>
-            <input type="text" id="username" name="username" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+            <label for="{{ form.username.id_for_label }}" class="block text-gray-600 text-sm font-semibold mb-2 inter">Username</label>
+            <input type="text" id="{{ form.username.id }}" name="{{ form.username.name }}" placeholder="Username" class="inter w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
         </div>
+
 
         <!-- Email -->
         <div class="mb-4 w-full md:w-1/2 px-4">
-            <label for="email" class="block text-gray-600 text-sm font-semibold mb-2">Email</label>
-            <input type="email" id="email" name="email" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+            <label for="{{ form.email.id_for_label }}" class="block text-gray-600 text-sm font-semibold mb-2 inter ">Email</label>
+            <input type="email" id="{{ form.email.id }}" name="{{ form.email.name }}" placeholder="Email" class=" inter w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
         </div>
 
         <!-- Password -->
         <div class="mb-4 w-full md:w-1/2 px-4">
-            <label for="password" class="block text-gray-600 text-sm font-semibold mb-2">Password</label>
-            <input type="password" id="password" name="password" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+            <label for="{{ form.password1.id_for_label }}" class="block text-gray-600 text-sm font-semibold mb-2 inter ">Password</label>
+            <input type="password" id="{{ form.password1.id }}" name="{{ form.password1.name }}" placeholder="Password" class="inter w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
         </div>
 
         <!-- Confirm Password -->
         <div class="mb-4 w-full md:w-1/2 px-4">
-            <label for="confirm_password" class="block text-gray-600 text-sm font-semibold mb-2">Confirm Password</label>
-            <input type="password" id="confirm_password" name="confirm_password" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
+            <label for="{{ form.password2.id_for_label }}" class="block text-gray-600 text-sm font-semibold mb-2 inter ">Confirm Password</label>
+            <input type="password" id="{{ form.password2.id }}" name="{{ form.password2.name }}" placeholder="Confirm Password" class="inter w-full border rounded px-3 py-2 focus:outline-none focus:border-blue-500" required>
         </div>
 
         <!-- Show Password Checkbox -->
-        <div class="mb-4 w-full px-4 flex items-center">
-            <input type="checkbox" id="show_password" class="mr-2">
-            <label for="show_password" class="text-gray-600 text-sm">Show Password</label>
+        <div class="mb-2 w-full px-4 flex items-center">
+          <input type="checkbox" id="show_password" class="mr-2" onchange="togglePasswordVisibility()">
+          <label for="show_password" class="text-gray-600 text-sm poppins-eb ml-1">Show Password</label>
         </div>
-
+      
         <script>
           function togglePasswordVisibility() {
               const passwordInput = document.getElementById('id_password');
@@ -225,27 +169,30 @@
       
 
         <!-- Create User Button -->
-        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 focus:outline-none focus:shadow-outline-blue mb-4 w-full">Create Account</button>
+        <button type="submit" class="bg-tahack  text-white px-4 py-2 rounded-full hover:bg-green-700 focus:outline-none focus:shadow-outline-blue mb-2 w-3/5">Create Account</button>
 
         <!-- Sign in With Google Button -->
-        <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded flex items-center justify-center hover:bg-blue-600 focus:outline-none focus:shadow-outline-red mb-4 w-full">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-6h4v-2h-4v2z"></path>
-            </svg>
-            Sign in With Google
-        </button>
+        <div class="mb-2">
+              
+          <button class="w-full border border-gray-300 hover:border-gray-500 px-4 py-2 rounded-full flex items-center justify-center">
+              <img class="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" alt="Google Icon">
+              {%load socialaccount %}
+              <a href="{% provider_login_url 'google' %}?next=/" class="poppins-eb ml-2">Sign in With Google </a>
+          </button>
+      </div>
     </form>
 
-    {% for message in messages %}
-    <p id="messages">{{message}}</p>
-    {% endfor %}
+    {{form.errors}}
 
     <!-- Already have an account? Login -->
-    <div class="text-gray-600 text-sm text-center">
-      Already have an account?
-      <a href="{% url 'users:loginView' %}" class="text-green-700">Login</a>
+    <div class="flex flex-row justify-center text-gray-600 text-sm text-center">
+      <p class="inter">Already have an account?</p>
+      <a href="{% url 'users:loginView' %}" class="text-green-700  ml-2">Login here!  </a>
     </div>
   </div>
 </div>
+
+
+
   </body>
 </html>

@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-SITE_ID=3 #new
+SITE_ID=4 #new
 
 INSTALLED_APPS = [
     'users', #new

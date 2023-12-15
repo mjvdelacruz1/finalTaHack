@@ -86,10 +86,6 @@
             <span class="self-center text-2xl k2d-eb text-white">taHack</span>
         </a>
         <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-              <span class="sr-only">Open user menu</span>
-              <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
-            </button>
             
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
               <div class="px-4 py-3">
@@ -154,7 +150,7 @@
       <div class="flex rounded-2xl shadow-2xl shadow-slate-800 my-8 mb-8">
         <!-- Login form -->
         <div class="flex flex-wrap content-center shadow  shadow-slate-800 justify-center rounded-2xl bg-white" style="width: 24rem; height: 32rem;">
-          <div class="flex flex-col justify-center w-72 py-8">
+          <div class="flex flex-col w-full justify-center py-8 mx-4">
             <!-- Heading -->
             <!-- <h1 class="text-xl font-semibold">Sign in to TaHack</h1> -->
             
@@ -199,14 +195,14 @@
                 
                 <div class="flex shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-xl">
                     
-                    <div class="w-full p-8 ">
+                    <div class="w-full ">
                         <h2 class="text-4xl font-semibold text-gray-700 text-center k2d-eb">taHack</h2>
                         <p class="text-xl text-gray-600 text-center poppins-eb m-2">Welcome back!</p>
               
-                        <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-3 rounded-full mt-2">
+                        <button class="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-2 rounded-full mt-2">
                           <img class="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA">
                           {%load socialaccount %}
-                          <a href="{% provider_login_url 'google' %}?next=/" class="inter">Sign in With Google </a>
+                          <a href="{% provider_login_url 'google' %}?next=/" class="inter ml-2 justify-center">Sign in With Google </a>
                       </button>
 
                         
@@ -221,21 +217,27 @@
               
                         <!-- done email username -->
                         <div class="mt-4">
-                            <label for="id_username" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
-                            <input  placeholder="Enter Username here..." id="id_username" name="username" class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" />
+                            <label for="id_username" class="block text-gray-700 text-sm font-bold mb-2 inter">Email Address</label>
+                            <input  placeholder="Username" id="id_username" name="username" class="inter bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" />
                         </div>
               
               <!-- done pword -->
                     <div class="mt-4 mb-4">
-                  <label for="id_password" class="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+                  <label for="id_password" class="block text-gray-700 text-sm font-bold mb-2 inter">Password</label>
 
-                      <input type="password" id="id_password" name="password" placeholder="Enter Password here..." class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none">
-                      <a href="#" class="text-xs text-gray-500 text-center">Forgot Password?</a>
+                      <input type="password" id="id_password" name="password" placeholder="Password" class="inter bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none">
+                      <div class="flex flex-col">
+                        <div>
+                         
+                        </div>
+                        
 
-                      <div class="pr-3 flex">
-                          <input type="checkbox" onclick="togglePasswordVisibility()" class="cursor-pointer mt-1">
-                          <label for="showPassword" class="text-gray-500 text-xs cursor-pointer inter">Show Password</label>
+                          <div class="mt-1">
+                              <input type="checkbox" onclick="togglePasswordVisibility()" class="cursor-pointer ">
+                              <label for="showPassword" class="text-gray-500 text-xs cursor-pointer inter">Show Password</label>
+                          </div>
                       </div>
+                      
 
                       <script>
                         function togglePasswordVisibility() {
@@ -250,15 +252,15 @@
               </div>
               
               <div class="mb-6">
-                <button class="w-full bg-slate-900 hover:bg-green-900 text-white px-4 py-2 rounded-md">Login</button>
+                <button class="btn bg-tahack w-full text-white rounded-lg px-4 py-2">Login</button>
               </div>
                          
               
   
               
-                        <div class="text-center">
-                          Don't have an account?
-                          <a href="{% url 'users:signup' %}" class="ml-2" style="cursor: pointer; text-decoration: underline; color: blue;">Sign Up</a>
+                        <div class="text-center flex  justify-center ">
+                          <p class="text-xs">Don't have an account?</p>
+                          <a href="{% url 'users:signup' %}" class="ml-2 inter text-xs" style="cursor: pointer; text-decoration: underline; color: blue;">Sign Up</a>
                         </div>
               
 
@@ -272,7 +274,7 @@
             </form>
   
             {% for message in messages %}
-                  <p id="messages">{{message}}</p>
+                  <p id="messages" class="text-tahack font-bold text-center mt-2">{{message}}</p>
             {% endfor %}
   
             <!-- Footer -->
